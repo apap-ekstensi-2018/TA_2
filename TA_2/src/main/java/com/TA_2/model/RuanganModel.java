@@ -1,4 +1,4 @@
-package com.TA2.model;
+package com.TA_2.model;
 
 public class RuanganModel {
 
