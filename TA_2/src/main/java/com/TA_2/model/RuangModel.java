@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RuangModel {
+	private int id;
 	private String nama;
 	private int kapasitas;
 }
