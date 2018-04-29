@@ -17,6 +17,12 @@ public class RuangServiceDatabase implements RuangService{
 	private RuangMapper ruangMapper;
 	
 	@Override
+	public void addRuang(RuangModel ruang) {
+		log.info ("insert ruang");
+		ruangMapper.addRuang(ruang);
+	}
+	
+	@Override
 	public RuangModel selectRuang(Integer id_ruang) {
 		log.info ("select ruang dengan id {}", id_ruang);
         return ruangMapper.selectRuang(id_ruang);

@@ -17,6 +17,12 @@ public class RuangController {
 	@Autowired
 	private RuangService ruangDAO;
 	
+	@RequestMapping("/")
+    public String index ()
+    {
+		return "index";
+    }
+	
 	@RequestMapping("/ruang/tambah")
     public String add (Model model)
     {	
@@ -24,11 +30,15 @@ public class RuangController {
         return "tambah-ruang";
     }
 	
-	@RequestMapping("/")
-    public String index (Model model)
+	@RequestMapping("/ruang/tambah/submit")
+    public String addSubmit (
+    			@RequestParam(value = "nama", required = false) String nama,
+            @RequestParam(value = "kapasitas", required = false) int kapasitas)
     {
-    	//model.addAttribute("title", "Home Page");
-        return "index";
+		RuangModel ruang = new RuangModel(nama, kapasitas);
+		
+		ruangDAO.addRuang (ruang);
+        return "tambah-success";
     }
 	
 	@RequestMapping("/ruang/view/{id_ruangan}")
