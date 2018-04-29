@@ -5,7 +5,7 @@
 	 </head>
 	 <body>
 	 	<h1>Tambah Mahasiswa</h1>
-	 	<form action="/ruang/tambah/submit" method="post" th:object="${ruang}">
+	 	<form action="/ruang/tambah/submit" method="get">
 	       	<table border="1" class="table table-striped table-bordered">
 			<tbody>
 				<tr>
@@ -13,8 +13,8 @@
 					<td><input style="width:100%;" type="text" name="nama" /></td>
 				</tr>
 				<tr>
-					<td style="padding-right:10px;"><label for="tempat_lahir">Kapasitas</label></td>
-					<td><input style="width:100%;" type="text" name="tempat_lahir" /></td>
+					<td style="padding-right:10px;"><label for="kapasitas">Kapasitas</label></td>
+					<td><input style="width:100%;" type="text" name="kapasitas" /></td>
 				</tr>
 			</tbody>
 			</table>
