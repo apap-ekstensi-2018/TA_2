@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+        <table class="display" style="width:100%">
+        	<thead>
+        		<tr>
+        			<td>NO</td>
+        			<td>ID</td>
+        			<td>Nama Ruang</td>
+        			<td>Kapasitas</td>
+        			<td></td>
+        			<td></td>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr th:each="ruang,iterationStatus: ${ruangs}">
+        			<td th:text="${iterationStatus.count}"></td>
+        			<td th:text="${ruang.id}"></td>
+        			<td th:text="${ruang.nama}"></td>
+        			<td th:text="${ruang.kapasitas}"></td>
+        		</tr>
+        	</tbody>
+        </table>
+    </body>
+</html>
+

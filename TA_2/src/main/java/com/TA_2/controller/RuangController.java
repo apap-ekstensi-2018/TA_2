@@ -1,7 +1,11 @@
 package com.TA_2.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,10 +35,31 @@ public class RuangController {
     			@RequestParam(value = "nama", required = false) String nama,
             @RequestParam(value = "kapasitas", required = false) int kapasitas)
     {
-		RuangModel ruang = new RuangModel(nama, kapasitas);
-		
-		ruangDAO.addRuang (ruang);
+//		RuangModel ruang = new RuangModel(nama, kapasitas);
+//		
+//		ruangDAO.addRuang (ruang);
         return "tambah-success";
+    }
+	
+	@RequestMapping("/ruang/view/{id_ruangan}")
+	public String view( Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan) {
+		RuangModel ruang = ruangDAO.selectRuang(id_ruangan);
+		model.addAttribute("ruang",ruang);
+		if (ruang != null) {
+            model.addAttribute ("ruang", ruang);
+            return "view-ruang";
+        } else {
+            model.addAttribute ("id", id_ruangan);
+            return "not-found";
+        }
+	}
+	
+	@RequestMapping("ruang/viewall")
+	public String view (Model model)
+    {
+        List<RuangModel> ruangs = ruangDAO.selectAllRuang();
+        model.addAttribute ("ruangs", ruangs);
+        return "viewall";
     }
 	
 }
