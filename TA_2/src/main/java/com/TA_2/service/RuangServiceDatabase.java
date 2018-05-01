@@ -33,4 +33,10 @@ public class RuangServiceDatabase implements RuangService{
 		log.info("select all ruang");
 		return ruangMapper.selectAllRuang();
 	}
+	
+	@Override
+	public void updateRuang(RuangModel ruang) {
+		log.info ("update ruang");
+		ruangMapper.updateRuang(ruang);
+	}
 }
