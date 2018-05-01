@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.TA_2.model.RuangModel;
 
@@ -20,4 +21,7 @@ public interface RuangMapper {
 	
 	@Select("select id, nama,kapasitas from ruang")
 	List <RuangModel> selectAllRuang();
+	
+	@Update("UPDATE ruang SET nama = #{nama}, kapasitas = #{kapasitas} WHERE id = #{id}")
+    void updateRuang (RuangModel ruang);
 }

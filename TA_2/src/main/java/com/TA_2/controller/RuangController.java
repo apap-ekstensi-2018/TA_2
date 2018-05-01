@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.TA_2.model.RuangModel;
@@ -31,15 +33,12 @@ public class RuangController {
     }
 	
 	@RequestMapping("/ruang/tambah/submit")
-    public String addSubmit (
-    			@RequestParam(value = "nama", required = false) String nama,
-            @RequestParam(value = "kapasitas", required = false) int kapasitas)
+    public String addSubmit (@ModelAttribute RuangModel ruang)
     {
-//		RuangModel ruang = new RuangModel(nama, kapasitas);
-//		
-//		ruangDAO.addRuang (ruang);
+		ruangDAO.addRuang (ruang);
         return "tambah-success";
     }
+
 	
 	@RequestMapping("/ruang/view/{id_ruangan}")
 	public String view( Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan) {
@@ -60,6 +59,28 @@ public class RuangController {
         List<RuangModel> ruangs = ruangDAO.selectAllRuang();
         model.addAttribute ("ruangs", ruangs);
         return "viewall";
+    }
+	
+	@RequestMapping("/ruang/update/{id_ruangan}")
+    public String update (Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan)
+    {	
+		RuangModel ruang = ruangDAO.selectRuang(id_ruangan);
+		model.addAttribute("ruang",ruang);
+		if (ruang != null) {
+            model.addAttribute ("ruang", ruang);
+            return "update-ruang";
+        } else {
+            model.addAttribute ("id", id_ruangan);
+            return "not-found";
+        }
+    }
+	
+	@RequestMapping(value = "/ruang/update/submit", method = RequestMethod.POST)
+    public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
+    {
+		ruangDAO.updateRuang(ruang);
+		model.addAttribute ("ruang", ruang);
+        return "update-success";
     }
 	
 }
