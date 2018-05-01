@@ -2,6 +2,7 @@ package com.TA_2.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -24,4 +25,7 @@ public interface RuangMapper {
 	
 	@Update("UPDATE ruang SET nama = #{nama}, kapasitas = #{kapasitas} WHERE id = #{id}")
     void updateRuang (RuangModel ruang);
+	
+	@Delete("DELETE FROM ruang where id = #{id}")
+    void deleteRuang(@Param("id") Integer id);
 }

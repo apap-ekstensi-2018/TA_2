@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.TA_2.model.RuangModel;
 import com.TA_2.service.RuangService;
@@ -83,4 +82,18 @@ public class RuangController {
         return "update-success";
     }
 	
+	@RequestMapping("/ruang/delete/{id_ruangan}")
+	public String delete (Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan)
+	{   
+		RuangModel ruang = ruangDAO.selectRuang(id_ruangan);
+	    if (ruang != null) {
+	    	ruangDAO.deleteRuang (id_ruangan);
+	        model.addAttribute ("ruang", ruang);
+	        return "delete";
+	    } else {
+	    	model.addAttribute ("id_ruangan", id_ruangan);
+	        return "not-found";
+	    }
+	}
 }
+
