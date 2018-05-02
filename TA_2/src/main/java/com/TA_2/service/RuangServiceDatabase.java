@@ -39,4 +39,11 @@ public class RuangServiceDatabase implements RuangService{
 		log.info ("update ruang");
 		ruangMapper.updateRuang(ruang);
 	}
+	
+	@Override
+    public void deleteRuang (Integer id_ruang)
+    {
+    	log.info("ruang " + id_ruang + " deleted");
+    	ruangMapper.deleteRuang(id_ruang);
+    }
 }

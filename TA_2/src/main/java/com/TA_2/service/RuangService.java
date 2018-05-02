@@ -12,4 +12,7 @@ public interface RuangService {
 	List <RuangModel> selectAllRuang();
 	
 	void updateRuang (RuangModel ruang);
+	
+	void deleteRuang (Integer id_ruang);
+	
 }
