@@ -3,6 +3,7 @@
 	<head th:fragment="head">
 		<title th:fragment="title" th:text="${title}">Fragment</title>
 		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/ta2.css" />
 	</head>
 	<body>
 		 <div th:fragment="navigation">
@@ -27,6 +28,12 @@
 			 			<a class="nav-link" href="ruang/tambah">Menambah Ruangan</a>
 			 		</li>
 		 		</ul>
+		 		<div style="display:flex;" th:if="${#httpServletRequest.remoteUser}!=null">
+		 			<p style="color:white;margin-top:0px;margin-right:20px;margin-bottom:0px;" th:text=" 'Login as ' + ${#httpServletRequest.remoteUser}">Login as</p>
+			 		<form  th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out"/>
+					</form>
+		 		</div>
 	 		</div>
  		</nav>
  		<!-- Title -->
