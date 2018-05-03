@@ -13,17 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.TA_2.model.RuangModel;
 import com.TA_2.service.RuangService;
 
-
 @Controller
 public class RuangController {
 	@Autowired
     RuangService ruangDAO;
-	
-	@RequestMapping("/")
-    public String index ()
-    {
-        return "index";
-    }
 	
 	@RequestMapping("/ruang/tambah")
     public String add ()
