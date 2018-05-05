@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	 <head>
+	<head th:replace="fragments/fragment-header :: head">
 	 	<title>Ruang</title>
 	 </head>
 	 <body>
-	 	<h1>Tambah Mahasiswa</h1>
+	 <div th:replace="fragments/fragment-header :: navigation"></div>
+	 	<h1>Ubah Ruangan</h1>
 	 	<form action="/ruang/update/submit" method="post" th:object="${ruang}">
 	       	<table border="1" class="table table-striped table-bordered">
 			<tbody>
@@ -27,5 +28,6 @@
 					<button class="btn btn-danger" type="submit" name="action" value="save">Simpan</button>
 				</div>
 			</form>
+		<div th:replace="fragments/fragment :: footer"></div>
 	 </body>
 </html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	 <head>
+	 <head th:replace="fragments/fragment-header :: head">
 	 	<title>Notif</title>
 	 </head>
 	 <body>
-	 	<h1>Update Sukses!</h1>
+	 	<div th:replace="fragments/fragment-header :: navigation"></div>
+	 	<h2>Ruangan Berhasil Diubah</h2>
+	 <div th:replace="fragments/fragment :: footer"></div>
 	 </body>
 </html>
