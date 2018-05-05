@@ -10,7 +10,7 @@
         			<td>ID Ruangan</td>
         			<td>Nama Ruangan</td>
         			<td>Kapasitas</td>
-        			<td>Aksi</td>
+        			<td th:if="${#httpServletRequest.isUserInRole('PEGAWAI')}">Aksi</td>
         		</tr>
         	</thead>
         	<tbody>
@@ -19,10 +19,10 @@
         			<td th:text="${ruang.id}"></td>
         			<td th:text="${ruang.nama}"></td>
         			<td th:text="${ruang.kapasitas}"></td>
-        			<td>
-        				<a th:href="'/ruang/view/'+${ruang.id}">Detail Ruangan</a> &nbsp &nbsp
-	        			<a th:href="'/ruang/update/'+${ruang.id}">Ubah Data Ruangan</a> &nbsp &nbsp
-	        			<a th:href="'/ruang/delete/'+${ruang.id}">Hapus Data Ruangan</a>
+        			<td th:if="${#httpServletRequest.isUserInRole('PEGAWAI')}">
+        				<a th:href="'/ruang/view/'+${ruang.id}">Detail</a> &nbsp &nbsp
+	        			<a th:href="'/ruang/update/'+${ruang.id}">Ubah</a> &nbsp &nbsp
+	        			<a th:href="'/ruang/delete/'+${ruang.id}">Hapus</a>
         			</td>
         		</tr>
         	</tbody>

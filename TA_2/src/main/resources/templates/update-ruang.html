@@ -6,20 +6,20 @@
 	 <body>
 	 <div th:replace="fragments/fragment-header :: navigation"></div>
 	 	<h1>Ubah Ruangan</h1>
-	 	<form action="/ruang/update/submit" method="post" th:object="${ruang}">
+	 	<form action="/ruang/update/submit" method="get" th:object="${ruang}">
 	       	<table border="1" class="table table-striped table-bordered">
 			<tbody>
 				<tr>
 					<td style="padding-right:10px;"><label for="id">ID Ruang</label></td>
-					<td><input type="text" name="id" readonly= "true" th:value="${ruang.id}" th:field="*{id}"/></td>
+					<td><input type="text" name="id" readonly="true" th:value="${ruang.id}" th:field="*{id}"/></td>
 				</tr>
 				<tr>
 					<td style="padding-right:10px;"><label for="nama">Nama Ruang</label></td>
-					<td><input type="text" name="nama" th:value="${ruang.nama}" th:field="*{nama}"/></td>
+					<td><input type="text" required="true" name="nama" th:value="${ruang.nama}" th:field="*{nama}"/></td>
 				</tr>
 				<tr>
 					<td style="padding-right:10px;"><label for="kapasitas">Kapasitas</label></td>
-					<td><input type="text" name="kapasitas" th:value="${ruang.kapasitas}" th:field="*{kapasitas}"/></td>
+					<td><input type="text" required="true" name="kapasitas" th:value="${ruang.kapasitas}" th:field="*{kapasitas}"/></td>
 				</tr>
 			</tbody>
 			</table>

@@ -67,11 +67,11 @@ public class RuangController {
         }
     }
 	
-	@RequestMapping(value = "/ruang/update/submit", method = RequestMethod.POST)
+	@RequestMapping(value = "/ruang/update/submit")
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
     {
 		ruangDAO.updateRuang(ruang);
-		model.addAttribute ("ruang", ruang);
+		//model.addAttribute ("ruang", ruang);
         return "update-success";
     }
 	
