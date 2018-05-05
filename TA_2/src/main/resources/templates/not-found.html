@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="fragments/fragment-header :: head">
         <title>Room not found</title>
     </head>
     <body>
-    	<h1>Room not found</h1>
-       	<h3 th:text="'ID = ' + ${id}">ID Ruang</h3>
+    <div th:replace="fragments/fragment-header :: navigation"></div>
+    	<h1>Ruangan Tidak Ditemukan</h1>
+       	<h3 th:text="'ID = ' + ${id}">ID Ruangan</h3>
+    <div th:replace="fragments/fragment :: footer"></div>
     </body>
 </html>
