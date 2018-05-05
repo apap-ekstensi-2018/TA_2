@@ -27,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 .antMatchers("/ruang/viewall").hasAnyRole("MAHASISWA","PEGAWAI")
 		 .antMatchers("/ruang/view/**").hasRole("PEGAWAI")
 		 .antMatchers("/ruang/update/**").hasRole("PEGAWAI")
+		 .antMatchers("/ruang/update").hasRole("PEGAWAI")
 		 .antMatchers("/ruang/delete/**").hasRole("PEGAWAI")
 		 .antMatchers("/ruang/tambah").hasRole("PEGAWAI")
 		 .anyRequest().authenticated()

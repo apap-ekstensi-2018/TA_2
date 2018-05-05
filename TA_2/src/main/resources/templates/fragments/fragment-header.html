@@ -25,7 +25,7 @@
 			 			<a class="nav-link" href="/ruang/viewall">Daftar Ruangan</a>
 			 		</li>
 			 		<li class="nav-item">
-			 			<a class="nav-link" href="/ruang/tambah">Menambah Ruangan</a>
+			 			<a class="nav-link" th:if="${#httpServletRequest.isUserInRole('PEGAWAI')}" href="/ruang/tambah">Menambah Ruangan</a>
 			 		</li>
 		 		</ul>
 		 		<div style="display:flex;" th:if="${#httpServletRequest.remoteUser}!=null">
