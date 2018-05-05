@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2018 at 04:21 PM
+-- Generation Time: May 05, 2018 at 04:29 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.0.27
 
@@ -77,9 +77,20 @@ CREATE TABLE `peminjaman_ruangan` (
 
 CREATE TABLE `ruang` (
   `id` int(11) UNSIGNED NOT NULL,
-  `nama` int(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
   `kapasitas` int(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ruang`
+--
+
+INSERT INTO `ruang` (`id`, `nama`, `kapasitas`) VALUES
+(3, '110540', 65),
+(4, '1103', 40),
+(5, 'R1105', 123),
+(6, 'R11209', 1234),
+(11, 'R2214', 100);
 
 -- --------------------------------------------------------
 
@@ -90,8 +101,17 @@ CREATE TABLE `ruang` (
 CREATE TABLE `user_account` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL
+  `role` varchar(100) NOT NULL,
+  `enabled` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_account`
+--
+
+INSERT INTO `user_account` (`username`, `password`, `role`, `enabled`) VALUES
+('admin', 'admin', 'ROLE_PEGAWAI', 1),
+('user', 'user', 'ROLE_MAHASISWA', 1);
 
 --
 -- Indexes for dumped tables
@@ -153,7 +173,7 @@ ALTER TABLE `peminjaman_ruangan`
 -- AUTO_INCREMENT for table `ruang`
 --
 ALTER TABLE `ruang`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
