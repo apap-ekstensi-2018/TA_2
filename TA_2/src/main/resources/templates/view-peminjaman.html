@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-header :: head"></head>
+    <body>
+    	 <div th:replace="fragments/fragment-header :: navigation"></div>
+        <div class="col-md-12">
+            <h4 th:text="'Lihat Data Peminjaman - '+${peminjaman_ruangan.id}"></h4>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.id}"></td>
+                </tr>
+                <tr>
+                    <th>Tanggal Mulai</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.tanggal_mulai}"></td>
+                </tr>
+                <tr>
+                    <th>Tanggal Selesai</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.tanggal_selesai}"></td>
+                </tr>
+				<tr>
+                    <th>Tujuan</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.tujuan}"></td>
+                </tr>
+				<tr>
+                    <th>Keterangan</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.jumlah_peserta}"></td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
+                    
+                </tr>
+           </table>
+           <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
+        	   <div>
+        	   
+           		<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{is_disetujui}" value="Setujui"  />
+           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{is_disetujui}" value="Tolak"  />
+				</div>
+		 
+		   </form>
+        </div>
+        	    	<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
