@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.TA_2.model.PeminjamanRuangModel;
 import com.TA_2.model.RuangModel;
+import com.TA_2.service.PeminjamanRuangService;
 import com.TA_2.service.RuangService;
 
 @Controller
 public class RuangController {
 	@Autowired
     RuangService ruangDAO;
+	@Autowired
+    PeminjamanRuangService peminjamanruangDAO;
+
 	
 	@RequestMapping("/ruang/tambah")
     public String add ()
@@ -45,6 +50,7 @@ public class RuangController {
         }
 	}
 	
+
 	@RequestMapping("ruang/viewall")
 	public String view (Model model)
     {
@@ -88,5 +94,30 @@ public class RuangController {
 	        return "not-found";
 	    }
 	}
+	
+	@RequestMapping("/peminjaman/{id}")
+	public String peminjaman( Model model, @PathVariable(value = "id") Integer id) {
+		PeminjamanRuangModel peminjaman_ruangan = peminjamanruangDAO.selectPeminjamanRuang(id);
+		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
+		if (peminjaman_ruangan != null) {
+            model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+            return "view-peminjaman";
+        } else {
+            model.addAttribute ("id", id);
+            return "not-found";
+        }
+	}
+	
+	
+	@RequestMapping(value = "/peminjaman/{id}/konfirmasi", method = RequestMethod.POST)
+    public String updateStatusPeminjaman (Model model,  @PathVariable(value = "id") Integer id, @ModelAttribute PeminjamanRuangModel peminjaman_ruangan)
+    {	
+		peminjamanruangDAO.updatePeminjamanRuang(peminjaman_ruangan);
+		 model.addAttribute("peminjaman_ruangan", peminjaman_ruangan);
+		 model.addAttribute("title","Berhasil Ubah");
+
+			return "konfirmasi-success";
+		  
+    }
 }
 
