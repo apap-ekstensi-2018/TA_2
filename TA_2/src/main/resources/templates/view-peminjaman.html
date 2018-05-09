@@ -12,36 +12,49 @@
                     <td th:text="${peminjaman_ruangan.id}"></td>
                 </tr>
                 <tr>
-                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Mulai Penggunaan</th>
                     <td style="width: 7%;"></td>
                     <td th:text="${peminjaman_ruangan.tanggal_mulai}"></td>
                 </tr>
                 <tr>
-                    <th>Tanggal Selesai</th>
+                    <th>Tanggal Selesai Penggunaan</th>
                     <td style="width: 7%;"></td>
                     <td th:text="${peminjaman_ruangan.tanggal_selesai}"></td>
                 </tr>
-				<tr>
-                    <th>Tujuan</th>
+                <tr>
+                    <th>Waktu Mulai Penggunaan</th>
                     <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.tujuan}"></td>
+                    <td th:text="${peminjaman_ruangan.waktu_mulai}"></td>
                 </tr>
 				<tr>
-                    <th>Keterangan</th>
+                    <th>Waktu Selesai Penggunaan</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.waktu_selesai}"></td>
+                </tr>
+				<tr>
+                    <th>Jumlah Peserta</th>
                     <td style="width: 7%;"></td>
                     <td th:text="${peminjaman_ruangan.jumlah_peserta}"></td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th>Fasilitas</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.fasilitas}"></td>
+                </tr>
+                <tr>
+                    <th>Keterangan</th>
+                    <td style="width: 7%;"></td>
+                    <td th:text="${peminjaman_ruangan.keterangan}"></td>
+                </tr>
+                <tr>
+                    <th>Status Peminjaman</th>
                     <td style="width: 7%;"></td>
                     <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
-                    
                 </tr>
            </table>
            <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
-        	   <div>
-        	   
-           		<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{is_disetujui}" value="Setujui"  />
+        	   <div th:if="${#httpServletRequest.isUserInRole('ROLE_ADMIN')}">
+        	   	<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{is_disetujui}" value="Setujui"  />
            		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{is_disetujui}" value="Tolak"  />
 				</div>
 		 

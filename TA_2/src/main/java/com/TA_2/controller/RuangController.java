@@ -119,5 +119,38 @@ public class RuangController {
 			return "konfirmasi-success";
 		  
     }
+	
+	@RequestMapping("/peminjaman/view/{id}")
+	public String viewPeminjaman( Model model, @PathVariable(value = "id") Integer id) {
+		PeminjamanRuangModel peminjaman_ruangan = peminjamanruangDAO.selectPeminjamanRuang2(id);
+		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
+		if (peminjaman_ruangan != null) {
+            model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+            return "view-peminjaman-ruang";
+        } else {
+            model.addAttribute ("id", id);
+            return "not-found";
+        }
+	}
+	
+	@RequestMapping("/peminjaman/viewall")
+	public String viewall( Model model) {
+		List<PeminjamanRuangModel> peminjaman_ruangan = peminjamanruangDAO.selectPeminjamanRuangAll();
+		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
+		
+            model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+            return "view-peminjaman-ruang-all";
+        
+	}
+	
+	@RequestMapping("/peminjaman/riwayat")
+	public String viewmhs( Model model, @PathVariable(value = "id") Integer id) {
+		List<PeminjamanRuangModel> peminjaman_ruangan = peminjamanruangDAO.selectPeminjamanRuangMhs(id);
+		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
+		
+            model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+            return "view-peminjaman-ruang-mhs";
+        
+	}
 }
 
