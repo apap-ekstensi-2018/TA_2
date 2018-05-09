@@ -71,7 +71,7 @@ public class PeminjamanRuangController {
         
 	}
 	
-	@RequestMapping("/peminjaman/riwayat/{id}")
+	@RequestMapping("/peminjaman/riwayat")
 	public String viewmhs( Model model, @PathVariable(value = "id") Integer id) {
 		List<PeminjamanRuangModel> peminjaman_ruangan = peminjamanruangDAO.selectPeminjamanRuangMhs(id);
 		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
