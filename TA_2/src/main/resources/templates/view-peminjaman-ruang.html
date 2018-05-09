@@ -1,79 +1,136 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/fragment-header :: head"></head>
-    <body>
-    	 <div th:replace="fragments/fragment-header :: navigation"></div>
-        <div class="col-md-12">
-            <h4 th:text="'Lihat Data Peminjaman Ruang - '+${peminjaman_ruangan.id}"></h4>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.id}"></td>
-                </tr>
-                <tr>
-                    <th>NPM Peminjam</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.npm}"></td>
-                </tr>
-                <tr>
-                    <th>Nama Peminjam</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.nama_mahasiswa}"></td>
-                </tr>
-                <tr>
-                    <th>Tujuan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.tujuan}"></td>
-                </tr>
-                <tr>
-                    <th>Ruangan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.nama_ruang}"></td>
-                </tr>
-                <tr>
-                    <th>Tanggal Mulai Penggunaan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.tanggal_mulai}"></td>
-                </tr>
-                <tr>
-                    <th>Tanggal Selesai Penggunaan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.tanggal_selesai}"></td>
-                </tr>
-                <tr>
-                    <th>Waktu Mulai Penggunaan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.waktu_mulai}"></td>
-                </tr>
-				<tr>
-                    <th>Waktu Selesai Penggunaan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.waktu_selesai}"></td>
-                </tr>
-				<tr>
-                    <th>Jumlah Peserta</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.jumlah_peserta}"></td>
-                </tr>
-                <tr>
-                    <th>Fasilitas</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.fasilitas}"></td>
-                </tr>
-                <tr>
-                    <th>Keterangan</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.keterangan}"></td>
-                </tr>
-                <tr>
-                    <th>Status Peminjaman</th>
-                    <td style="width: 7%;"></td>
-                    <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
-                </tr>
-           </table>
+	<head th:replace="fragments/fragment-header :: head">
+	 	<title>Ruangan</title>
+	 </head> 
+	 <body>
+    <!--  wrapper -->
+    <div id="wrapper">
+        <div th:replace="fragments/fragment-header :: top_navigation"></div>
+        <div th:replace="fragments/fragment-header :: navigation"></div>
+        <!--  page-wrapper -->
+        <div id="page-wrapper">
+
+            <div class="row">
+                 <!--  page header -->
+                <div class="col-lg-12">
+                    <h1 class="page-header" th:text="'Lihat Data Peminjaman Ruang - '+${peminjaman_ruangan.id}"></h1>
+                </div>
+                 <!-- end  page header -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+            
+					            <table>
+					                <tr>
+					                    <th>ID</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.id}"></td>
+					                </tr>
+					                <tr>
+					                    <th>NPM Peminjam</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.npm}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Nama Peminjam</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.nama_mahasiswa}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Tujuan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.tujuan}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Ruangan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.nama_ruang}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Tanggal Mulai Penggunaan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.tanggal_mulai}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Tanggal Selesai Penggunaan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.tanggal_selesai}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Waktu Mulai Penggunaan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.waktu_mulai}"></td>
+					                </tr>
+									<tr>
+					                    <th>Waktu Selesai Penggunaan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.waktu_selesai}"></td>
+					                </tr>
+									<tr>
+					                    <th>Jumlah Peserta</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.jumlah_peserta}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Fasilitas</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.fasilitas}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Keterangan</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.keterangan}"></td>
+					                </tr>
+					                <tr>
+					                    <th>Status Peminjaman</th>
+					                    <td style="width: 7%;"></td>
+					                    <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
+					                </tr>
+					                <tr>
+					                	<th></th>
+					                	<td colspan="3" th:if="${#httpServletRequest.isUserInRole('PEGAWAI')}">
+					        				<a th:href="'/peminjaman/'+ ${peminjaman_ruangan.id}+'/konfirmasi/Setuju'"><button class="btn btn-success btn-sm">Setuju</button></a>&nbsp;
+                        					<a th:href="'/peminjaman/'+ ${peminjaman_ruangan.id}+'/konfirmasi/Tolak'"><button class="btn btn-danger btn-sm">Tolak</button></a>
+					        			</td>
+					        			<td></td>
+					                </tr>
+					           </table>
           
         </div>
-        	    	<div th:replace="fragments/fragment :: footer"></div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+        
+            </div>
+        </div>
+        <!-- end page-wrapper -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/assets/plugins/pace/pace.js"></script>
+    <script src="/assets/scripts/siminta.js"></script>
+    <!-- Page-Level Plugin Scripts-->
+    <script src="/assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
     </body>
 </html>
