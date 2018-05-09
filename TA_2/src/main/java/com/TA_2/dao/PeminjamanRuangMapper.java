@@ -1,5 +1,6 @@
 package com.TA_2.dao;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,6 +17,15 @@ public interface PeminjamanRuangMapper {
 	@Select("select id, tanggal_mulai, tanggal_selesai, waktu_mulai, waktu_selesai, is_disetujui from peminjaman_ruangan where id = #{id}")
     PeminjamanRuangModel selectPeminjamanRuang (@Param("id") Integer id);
 	
+	@Select("select p.*, r.nama as nama_ruang, m.npm, m.nama as nama_mahasiswa from peminjaman_ruangan p, ruang r, mahasiswa m where p.id_ruang = r.id and p.id_mahasiswa = m.id and p.id = #{id}")
+    PeminjamanRuangModel selectPeminjamanRuang2 (@Param("id") Integer id);
+	
+	@Select("select p.*, r.nama as nama_ruang, m.npm, m.nama as nama_mahasiswa from peminjaman_ruangan p, ruang r, mahasiswa m where p.id_ruang = r.id and p.id_mahasiswa = m.id")
+    List<PeminjamanRuangModel> selectPeminjamanRuangAll ();
+	
+	@Select("select p.*, r.nama as nama_ruang, m.npm, m.nama as nama_mahasiswa from peminjaman_ruangan p, ruang r, mahasiswa m where p.id_ruang = r.id and p.id_mahasiswa = m.id and m.id = #{id}")
+    List<PeminjamanRuangModel> selectPeminjamanRuangMhs (@Param("id") Integer id);
+	
 	@Update("UPDATE peminjaman_ruangan SET is_disetujui = #{is_disetujui} WHERE id = #{id}")
-    void updatePeminjamanRuang (PeminjamanRuangModel peminjaman_ruangan);
+    void updatePeminjamanRuang (@Param("is_disetujui") String is_disetujui, @Param("id") int id);
 }

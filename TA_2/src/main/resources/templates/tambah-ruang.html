@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	  <head th:replace="fragments/fragment-header :: head">
-	 	<title>Ruang</title>
-	 </head>
-	 <body>
-		<div th:replace="fragments/fragment-header :: navigation"></div>
-	 	<h1>Tambah Ruangan</h1>
-	 	<form action="/ruang/tambah/submit" method="get">
-	       	<table border="1" class="table table-striped table-bordered">
-			<tbody>
-				<tr>
-					<td style="padding-right:10px;"><label for="nama">Nama Ruangan</label></td>
-					<td><input style="width:100%;" type="text" required="true" name="nama" /></td>
-				</tr>
-				<tr>
-					<td style="padding-right:10px;"><label for="kapasitas">Kapasitas</label></td>
-					<td><input style="width:100%;" type="text" required="true" name="kapasitas" /></td>
-				</tr>
-			</tbody>
-			</table>
-	    	
-	    		<div>
-					<button class="btn btn-danger" type="submit" name="action" value="save">Simpan</button>
-				</div>
-			</form>
-		<div th:replace="fragments/fragment :: footer"></div>
-	 </body>
+	 	<title>Ruangan</title>
+	 </head>  
+	<body>
+    <!--  wrapper -->
+    <div id="wrapper">
+        <div th:replace="fragments/fragment-header :: top_navigation"></div>
+        <div th:replace="fragments/fragment-header :: navigation"></div>
+        <!--  page-wrapper -->
+          <div id="page-wrapper">
+            <div class="row">
+                 <!-- page header -->
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tambah Ruangan</h1>
+                </div>
+                <!--end page header -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Form Elements
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" action="/ruang/tambah/submit" method="get">
+
+                                        <div class="form-group">
+                                            <label>Nama Ruangan</label>
+                                            <input class="form-control" placeholder="Isi Nama Ruangan" required="true" name="nama"/>  
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Kapasitas Ruangan</label>
+                                            <input class="form-control" placeholder="Isi Kapasitas Ruangan" required="true" name="kapasitas" />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="action" value="save">Simpan</button>
+									</form>
+                     <!-- End Form Elements -->
+                </div>
+            </div>
+        </div>
+        <!-- end page-wrapper -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/assets/plugins/pace/pace.js"></script>
+    <script src="/assets/scripts/siminta.js"></script>
+
+</body>
+	 
+	 
 </html>

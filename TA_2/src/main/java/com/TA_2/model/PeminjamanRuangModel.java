@@ -23,5 +23,7 @@ public class PeminjamanRuangModel {
 	private String fasilitas;
 	private String is_disetujui;
 	private String disetujui_oleh;
-	
+	private String npm;
+	private String nama_mahasiswa;
+	private String nama_ruang;
 }
