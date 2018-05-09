@@ -94,17 +94,6 @@
 					                    <td style="width: 7%;"></td>
 					                    <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
 					                </tr>
-<<<<<<< HEAD
-					                <tr>
-					                	<th></th>
-					                	<td colspan="3" th:if="${#httpServletRequest.isUserInRole('PEGAWAI')}">
-					        				<a th:href="'/peminjaman/'+ ${peminjaman_ruangan.id}+'/konfirmasi/Setuju'"><button class="btn btn-success btn-sm">Setuju</button></a>&nbsp;
-                        					<a th:href="'/peminjaman/'+ ${peminjaman_ruangan.id}+'/konfirmasi/Tolak'"><button class="btn btn-danger btn-sm">Tolak</button></a>
-					        			</td>
-					        			<td></td>
-					                </tr>
-					           </table>
-=======
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
 						        	  <div th:if="${#httpServletRequest.isUserInRole('ROLE_ADMIN')}">
@@ -112,7 +101,6 @@
 						           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{is_disetujui}" value="Tolak"  />
 									  </div>
 								 </form>
->>>>>>> 28ac9792a7745bb7bde8ceb16aa6bf3ae745b97e
         </div>
                             
                         </div>
