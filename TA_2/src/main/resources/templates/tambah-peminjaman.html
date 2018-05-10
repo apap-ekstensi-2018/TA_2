@@ -52,39 +52,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Mulai</label>
-                                        <input class="form-control" type="text" name="tanggal_mulai" th:field="*{tanggalMulai}" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Waktu Mulai</label>
-                                        <input class="form-control" type="text" name="waktu_mulai" th:field="*{waktuMulai}" />
+                                        <input class="form-control" type="text" name="tanggal_mulai" th:field="*{tanggalMulai}" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Selesai</label>
-                                        <input class="form-control" type="text" name="tanggal_selesai" th:field="*{tanggalSelesai}" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Waktu Selesai</label>
-                                        <input class="form-control" type="text" name="waktu_selesai" th:field="*{waktuSelesai}" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kapasitas</label>
-                                        <input class="form-control" type="number" name="kapasitas" th:field="*{kapasitas}" />
+                                        <input class="form-control" type="text" name="tanggal_selesai" th:field="*{tanggalSelesai}" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Tujuan</label>
-                                        <input class="form-control" type="text" name="tujuan" th:field="*{tujuan}" />
+                                        <input class="form-control" type="text" name="tujuan" th:field="*{tujuan}" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Keterangan</label>
-                                        <textarea class="form-control" name="keterangan" th:field="*{keterangan}"></textarea>
+                                        <textarea class="form-control" name="keterangan" th:field="*{keterangan}" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Peserta</label>
-                                        <input class="form-control" type="number" name="jumlah_peserta" th:field="*{jumlahPeserta}" />
+                                        <input class="form-control" type="number" name="jumlah_peserta" th:field="*{jumlahPeserta}" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Fasilitas</label>
-                                        <textarea class="form-control" name="fasilitas" th:field="*{fasilitas}"></textarea>
+                                        <textarea class="form-control" name="fasilitas" th:field="*{fasilitas}" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-success" type="submit" name="action" value="save">Save</button>
@@ -108,8 +96,27 @@
 <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/assets/plugins/pace/pace.js"></script>
-<script src="/assets/scripts/siminta.js"></script>
+<script src="/assets/plugins/pace/pace.js"></script>
+<script src="/js/moment-with-locales.js"></script>
+<script src="/js/bootstrap-datetimepicker.js"></script>
 <!-- Page-Level Plugin Scripts-->
+<script type="text/javascript">
+    $(function () {
+        $('#tanggalMulai').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        });
+        $('#tanggalSelesai').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: false
+        });
+        $('#tanggalMulai').on('dp.change', function (e) {
+            $('#tanggalSelesai').data("DateTimePicker").minDate(e.date);
+        });
+        $('#tanggalSelesai').on('dp.change', function (e) {
+            $('#tanggalMulai').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
 </body>
 
 </html>

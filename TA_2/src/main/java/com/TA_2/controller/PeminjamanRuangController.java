@@ -122,17 +122,22 @@ public class PeminjamanRuangController {
 
 	@RequestMapping("/peminjaman/tambah/submit")
 	public String addSubmit(@ModelAttribute PeminjamanRuangModel peminjaman) {
-		String npm = SecurityContextHolder.getContext().getAuthentication().getName();
-		MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
-
-		peminjaman.setIdMahasiswa(mahasiswa.getId());
-		String tanggalDanWaktuMulai = peminjaman.getTanggalMulai() + " " + peminjaman.getWaktuMulai();
-		String tanggalDanWaktuSelesai = peminjaman.getTanggalSelesai() + " " + peminjaman.getWaktuSelesai();
-		List<PeminjamanRuangModel> peminjamanTerpakai = peminjamanRuanganService.selectPeminjaman(tanggalDanWaktuMulai, tanggalDanWaktuSelesai, peminjaman.getIdRuang());
+		List<PeminjamanRuangModel> peminjamanTerpakai = peminjamanRuanganService.selectPeminjaman(peminjaman.getTanggalMulai(), peminjaman.getTanggalSelesai(), peminjaman.getIdRuang());
 
 		if (peminjamanTerpakai.size() > 0) {
 			return "tambah-peminjaman-failed-terpakai";
 		} else {
+			String npm = SecurityContextHolder.getContext().getAuthentication().getName();
+			MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
+			peminjaman.setIdMahasiswa(mahasiswa.getId());
+
+			String[] splitTanggalMulai = peminjaman.getTanggalMulai().split(" ");
+			String[] splitTanggalSelesai = peminjaman.getTanggalSelesai().split(" ");
+			peminjaman.setTanggalMulai(splitTanggalMulai[0]);
+			peminjaman.setWaktuMulai(splitTanggalMulai[1]);
+			peminjaman.setTanggalSelesai(splitTanggalSelesai[0]);
+			peminjaman.setWaktuSelesai(splitTanggalSelesai[1]);
+
 			peminjamanRuanganService.addPeminjaman(peminjaman);
 
 			return "tambah-peminjaman-success";

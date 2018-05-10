@@ -22,6 +22,7 @@ $(function () {
 
     ///pace function for showing progress
 
+    /*
     function load(time) {
         var x = new XMLHttpRequest()
         x.open('GET', "" + time, true);
@@ -45,8 +46,7 @@ $(function () {
     paceOptions = {
         elements: true
     };
-   
-
+    */
 });
 
 //Loads the correct sidebar on window load, collapses the sidebar on window resize.
