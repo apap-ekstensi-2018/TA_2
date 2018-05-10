@@ -1,0 +1,52 @@
+.login-page-container {
+	height: 100vh;
+	-webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    display: flex;
+}
+
+.login-left-container {
+	width:50%;
+	margin:0;
+}
+
+.login-right-container {
+	background-image:url("/img/classroom.jpg");
+	height:100%;
+	width:50%;
+	margin:0;
+}
+
+.RYLFjr {
+    animation-name: WAV12G;
+    animation-duration: .4s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-delay: .25s;
+    opacity: 0;
+}
+
+.order-2 {
+    -webkit-box-ordinal-group: 3;
+    order: 2;
+}
+.shrink-0 {
+    flex-shrink: 0;
+}
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-repeat-none {
+    background-repeat: no-repeat;
+}
+.flex-column>* {
+    min-height: 0;
+}
+.bg-top {
+    background-position-y: top;
+}
+.bg-left {
+    background-position-x: left;
+}
