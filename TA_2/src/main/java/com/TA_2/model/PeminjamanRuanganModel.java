@@ -1,15 +1,13 @@
 package com.TA_2.model;
 
-import java.util.Date;
-
 public class PeminjamanRuanganModel {
     private int id;
     private int idRuang;
     private int idMahasiswa;
-    private Date waktuMulai;
-    private Date waktuSelesai;
-    private Date tanggalMulai;
-    private Date tanggalSelesai;
+    private String waktuMulai;
+    private String waktuSelesai;
+    private String tanggalMulai;
+    private String tanggalSelesai;
     private int kapasitas;
     private String tujuan;
     private String keterangan;
@@ -42,35 +40,35 @@ public class PeminjamanRuanganModel {
         this.idMahasiswa = idMahasiswa;
     }
 
-    public Date getWaktuMulai() {
+    public String getWaktuMulai() {
         return waktuMulai;
     }
 
-    public void setWaktuMulai(Date waktuMulai) {
+    public void setWaktuMulai(String waktuMulai) {
         this.waktuMulai = waktuMulai;
     }
 
-    public Date getWaktuSelesai() {
+    public String getWaktuSelesai() {
         return waktuSelesai;
     }
 
-    public void setWaktuSelesai(Date waktuSelesai) {
+    public void setWaktuSelesai(String waktuSelesai) {
         this.waktuSelesai = waktuSelesai;
     }
 
-    public Date getTanggalMulai() {
+    public String getTanggalMulai() {
         return tanggalMulai;
     }
 
-    public void setTanggalMulai(Date tanggalMulai) {
+    public void setTanggalMulai(String tanggalMulai) {
         this.tanggalMulai = tanggalMulai;
     }
 
-    public Date getTanggalSelesai() {
+    public String getTanggalSelesai() {
         return tanggalSelesai;
     }
 
-    public void setTanggalSelesai(Date tanggalSelesai) {
+    public void setTanggalSelesai(String tanggalSelesai) {
         this.tanggalSelesai = tanggalSelesai;
     }
 

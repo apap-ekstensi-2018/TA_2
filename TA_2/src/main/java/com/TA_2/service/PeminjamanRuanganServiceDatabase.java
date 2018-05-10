@@ -5,6 +5,8 @@ import com.TA_2.model.PeminjamanRuanganModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PeminjamanRuanganServiceDatabase implements PeminjamanRuanganService {
     @Autowired
@@ -13,5 +15,10 @@ public class PeminjamanRuanganServiceDatabase implements PeminjamanRuanganServic
     @Override
     public void addPeminjaman(PeminjamanRuanganModel peminjaman) {
         peminjamanRuanganMapper.addPeminjaman(peminjaman);
+    }
+
+    @Override
+    public List<PeminjamanRuanganModel> selectPeminjaman(String tanggalDanWaktuMulai, String tanggalDanWaktuSelesai, int idRuang) {
+        return peminjamanRuanganMapper.selectPeminjaman(tanggalDanWaktuMulai, tanggalDanWaktuSelesai, idRuang);
     }
 }
