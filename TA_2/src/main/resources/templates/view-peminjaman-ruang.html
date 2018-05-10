@@ -23,81 +23,65 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                             Informasi Peminjaman
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-            
-					            <table>
-					                <tr>
-					                    <th>ID</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.id}"></td>
-					                </tr>
-					                <tr>
-					                    <th>NPM Peminjam</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.idMahasiswa}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Nama Peminjam</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.namaMahasiswa}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Tujuan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.tujuan}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Ruangan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.namaRuang}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Tanggal Mulai Penggunaan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.tanggalMulai}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Tanggal Selesai Penggunaan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.tanggalSelesai}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Waktu Mulai Penggunaan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.waktuMulai}"></td>
-					                </tr>
-									<tr>
-					                    <th>Waktu Selesai Penggunaan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.waktuSelesai}"></td>
-					                </tr>
-									<tr>
-					                    <th>Jumlah Peserta</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.jumlahPeserta}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Fasilitas</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.fasilitas}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Keterangan</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.keterangan}"></td>
-					                </tr>
-					                <tr>
-					                    <th>Status Peminjaman</th>
-					                    <td style="width: 7%;"></td>
-					                    <td th:if="${peminjaman_ruangan.isDisetujui} eq null">Pending</td>
-					                    <td th:if="${peminjaman_ruangan.isDisetujui}==1">Setuju</td>
-					                    <td th:if="${peminjaman_ruangan.isDisetujui}==2">Tolak</td>
-					                </tr>
-					             </table>
-						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
+            					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <tbody>
+                                    	<tr>
+											<td style="padding-right:10px;"><label for="nama">ID Peminjaman</label></td>
+											<td th:text="${peminjaman_ruangan.id}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="nama">NPM Peminjam</label></td>
+											<td th:text="${peminjaman_ruangan.idMahasiswa}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Nama Peminjam</label></td>
+											<td th:text="${peminjaman_ruangan.namaMahasiswa}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Tujuan</label></td>
+											<td th:text="${peminjaman_ruangan.tujuan}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Tanggal Mulai Penggunaan</label></td>
+											<td th:text="${peminjaman_ruangan.tanggalMulai}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Tanggal Selesai Penggunaan</label></td>
+											<td th:text="${peminjaman_ruangan.tujuan}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Waktu Mulai Penggunaan</label></td>
+											<td th:text="${peminjaman_ruangan.waktuMulai}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Waktu Selesai Penggunaan</label></td>
+											<td th:text="${peminjaman_ruangan.waktuSelesai}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Jumlah Peserta</label></td>
+											<td th:text="${peminjaman_ruangan.jumlahPeserta}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Fasilitas</label></td>
+											<td th:text="${peminjaman_ruangan.fasilitas}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Keterangan</label></td>
+											<td th:text="${peminjaman_ruangan.keterangan}"></td>
+										</tr>
+										<tr>
+											<td style="padding-right:10px;"><label for="tempat_lahir">Status Peminjaman</label></td>
+											<td th:if="${peminjaman_ruangan.isDisetujui} eq null">Pending</td>
+						                    <td th:if="${peminjaman_ruangan.isDisetujui}==1">Setuju</td>
+						                    <td th:if="${peminjaman_ruangan.isDisetujui}==2">Tolak</td>
+										</tr>
+                                    </tbody>
+                                </table>
+                                <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
 						        	  <div th:if="${peminjaman_ruangan.isDisetujui} eq null">
 						        	   	<button type="submit" class="btn btn-success"  name="isDisetujui" th:field="*{isDisetujui}" value="1" >Setujui</button>
 						           		<button type="submit" class="btn btn-danger"  name="isDisetujui" th:field="*{isDisetujui}" value="2"  >Tolak</button>
