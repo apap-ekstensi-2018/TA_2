@@ -37,12 +37,12 @@
 					                <tr>
 					                    <th>NPM Peminjam</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.npm}"></td>
+					                    <td th:text="${peminjaman_ruangan.idMahasiswa}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Nama Peminjam</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.nama_mahasiswa}"></td>
+					                    <td th:text="${peminjaman_ruangan.namaMahasiswa}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Tujuan</th>
@@ -52,32 +52,32 @@
 					                <tr>
 					                    <th>Ruangan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.nama_ruang}"></td>
+					                    <td th:text="${ruang.nama}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Tanggal Mulai Penggunaan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.tanggal_mulai}"></td>
+					                    <td th:text="${peminjaman_ruangan.tanggalMulai}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Tanggal Selesai Penggunaan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.tanggal_selesai}"></td>
+					                    <td th:text="${peminjaman_ruangan.tanggalSelesai}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Waktu Mulai Penggunaan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.waktu_mulai}"></td>
+					                    <td th:text="${peminjaman_ruangan.waktuMulai}"></td>
 					                </tr>
 									<tr>
 					                    <th>Waktu Selesai Penggunaan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.waktu_selesai}"></td>
+					                    <td th:text="${peminjaman_ruangan.waktuSelesai}"></td>
 					                </tr>
 									<tr>
 					                    <th>Jumlah Peserta</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.jumlah_peserta}"></td>
+					                    <td th:text="${peminjaman_ruangan.jumlahPeserta}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Fasilitas</th>
@@ -92,13 +92,13 @@
 					                <tr>
 					                    <th>Status Peminjaman</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.is_disetujui}"></td>
+					                    <td th:text="${peminjaman_ruangan.isDisetujui}"></td>
 					                </tr>
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
-						        	  <div th:if="${#httpServletRequest.isUserInRole('ROLE_ADMIN')}">
-						        	   	<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{is_disetujui}" value="Setujui"  />
-						           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{is_disetujui}" value="Tolak"  />
+						        	  <div>
+						        	   	<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{isDisetujui}" value="Setujui"  />
+						           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{isDisetujui}" value="Tolak"  />
 									  </div>
 								 </form>
         </div>
