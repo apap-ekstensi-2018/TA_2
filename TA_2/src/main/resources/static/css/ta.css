@@ -8,7 +8,7 @@
 
 .login-left-container {
 	width:50%;
-	margin:0;
+	margin-top: 180px;
 }
 
 .login-right-container {
@@ -18,35 +18,40 @@
 	margin:0;
 }
 
-.RYLFjr {
-    animation-name: WAV12G;
-    animation-duration: .4s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
-    animation-delay: .25s;
-    opacity: 0;
+.login-form-container {
+	max-width: 380px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.order-2 {
-    -webkit-box-ordinal-group: 3;
-    order: 2;
-}
-.shrink-0 {
-    flex-shrink: 0;
-}
-.bg-cover {
-    background-size: cover;
+.button-comment {
+	margin-top: 5px;
+	border:none;
+	background-color:#33b5e5!important;
+	color: #fff!important;
+	padding: .84rem 2.14rem;
+	font-size: 1.5rem;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+	border-radius: 3px;
 }
 
-.bg-repeat-none {
-    background-repeat: no-repeat;
+.form_text {
+    padding: 0 15px;
+    height: 55px;
+    background: #f1f1f2;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+    font-size: 15px;
+    font-weight: 100;
+    color: #8a9199;
+    font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-.flex-column>* {
-    min-height: 0;
-}
-.bg-top {
-    background-position-y: top;
-}
-.bg-left {
-    background-position-x: left;
+
+login-form-header-container {
+	margin: 20px 20px;
 }
