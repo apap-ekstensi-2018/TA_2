@@ -52,7 +52,7 @@
 					                <tr>
 					                    <th>Ruangan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${ruang.nama}"></td>
+					                    <td th:text="${peminjaman_ruangan.namaRuang}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Tanggal Mulai Penggunaan</th>
@@ -96,7 +96,7 @@
 					                </tr>
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
-						        	  <div>
+						        	  <div th:if="${#httpServletRequest.isUserInRole('staf')}">
 						        	   	<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{isDisetujui}" value="Setujui"  />
 						           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{isDisetujui}" value="Tolak"  />
 									  </div>

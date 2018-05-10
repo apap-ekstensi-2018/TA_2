@@ -20,10 +20,10 @@ public interface PeminjamanRuangMapper {
 	@Select("select p.*, r.nama as nama_ruang, m.npm, m.nama as nama_mahasiswa from peminjaman_ruangan p, ruang r, mahasiswa m where p.id_ruang = r.id and p.id_mahasiswa = m.id and p.id = #{id}")
     PeminjamanRuangModel selectPeminjamanRuang2(@Param("id") int id);
 
-	@Select("select p.*, r.nama as nama_ruang from peminjaman_ruangan p, ruang r where p.id_ruang = r.id")
+	@Select("select * from peminjaman_ruangan")
     List<PeminjamanRuangModel> selectPeminjamanRuangAll();
 
-	@Select("select p.*, r.nama as nama_ruang, m.npm, m.nama as nama_mahasiswa from peminjaman_ruangan p, ruang r, mahasiswa m where p.id_ruang = r.id and p.id_mahasiswa = m.id and m.id = #{id}")
+	@Select("select * from peminjaman_ruangan where id_mahasiswa = #{id}")
     List<PeminjamanRuangModel> selectPeminjamanRuangMhs(@Param("id") int id);
 
 	@Update("UPDATE peminjaman_ruangan SET is_disetujui = #{isDisetujui} WHERE id = #{id}")
