@@ -3,6 +3,7 @@ package com.TA_2.controller;
 import java.util.List;
 
 import com.TA_2.dao.MahasiswaDAO;
+import com.TA_2.dao.RuangMapper;
 import com.TA_2.model.MahasiswaModel;
 import com.TA_2.model.RuangModel;
 import com.TA_2.service.RuangService;
@@ -27,6 +28,8 @@ public class PeminjamanRuangController {
 	RuangService ruangService;
 	@Autowired
 	MahasiswaDAO mahasiswaDAO;
+	@Autowired
+	RuangMapper ruangDAO;
 
 	@RequestMapping("/peminjaman/{id}")
 	public String peminjaman( Model model, @PathVariable(value = "id") int id) {
@@ -51,10 +54,17 @@ public class PeminjamanRuangController {
 
 	@RequestMapping("/peminjaman/view/{id}")
 	public String view( Model model, @PathVariable(value = "id") int id) {
-		PeminjamanRuangModel peminjaman_ruangan = peminjamanRuanganService.selectPeminjamanRuang2(id);
-		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
+		PeminjamanRuangModel peminjaman_ruangan = peminjamanRuanganService.selectPeminjamanRuang(id);
+		
 		if (peminjaman_ruangan != null) {
+			MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaById(peminjaman_ruangan.getIdMahasiswa());
+			peminjaman_ruangan.setIdMahasiswa(Integer.parseInt(mahasiswa.getNpm()));
+			peminjaman_ruangan.setNamaMahasiswa(mahasiswa.getNama());
+			
+			RuangModel ruang = ruangDAO.selectRuang(peminjaman_ruangan.getIdRuang());
+					
 			model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+			model.addAttribute ("ruang", ruang);
 			return "view-peminjaman-ruang";
 		} else {
 			model.addAttribute ("id", id); return "not-found";
