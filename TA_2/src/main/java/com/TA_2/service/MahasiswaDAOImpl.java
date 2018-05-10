@@ -13,8 +13,15 @@ public class MahasiswaDAOImpl implements MahasiswaDAO {
     private RestTemplate restTemplate;
 
     @Override
-    public MahasiswaModel selectMahasiswa(String npm) {
+    public MahasiswaModel selectMahasiswaByNPM(String npm) {
         MahasiswaModel mahasiswaModel = restTemplate.getForObject(ApiCall.APAP_EKSTENSI_API_BASE_URL + "/mahasiswa/view/npm/" + npm, MahasiswaModel.class);
+
+        return mahasiswaModel;
+    }
+
+    @Override
+    public MahasiswaModel selectMahasiswaById(int id) {
+        MahasiswaModel mahasiswaModel = restTemplate.getForObject(ApiCall.APAP_EKSTENSI_API_BASE_URL + "/mahasiswa/view/id/" + id, MahasiswaModel.class);
 
         return mahasiswaModel;
     }

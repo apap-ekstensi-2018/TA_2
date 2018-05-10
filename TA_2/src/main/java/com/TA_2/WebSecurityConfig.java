@@ -15,42 +15,42 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		http
-		 .authorizeRequests()
-		 .antMatchers("/css/**").permitAll()
-		 .antMatchers("/assets/**").permitAll()
-		 .antMatchers("/fonts/**").permitAll()
-		 .antMatchers("/js/**").permitAll()
-				.antMatchers("/img/**").permitAll()
-		 .antMatchers("/ruang/viewall").hasAnyAuthority("mahasiswa","staf")
-		 .antMatchers("/ruang/view/**").hasAuthority("staf")
-		 .antMatchers("/ruang/update/**").hasAuthority("staf")
-		 .antMatchers("/ruang/update").hasAuthority("staf")
-		 .antMatchers("/ruang/delete/**").hasAuthority("staf")
-		 .antMatchers("/ruang/tambah").hasAuthority("staf")
-		 .antMatchers("/peminjaman/tambah").hasAuthority("mahasiswa")
-			.antMatchers("/peminjaman/view/**").hasAnyRole("mahasiswa","staf")
-			.antMatchers("/peminjaman/viewall").hasRole("staf")
-			.antMatchers("/peminjaman/riwayat").hasRole("mahasiswa")
-		 .anyRequest().authenticated()
-		 .and()
-		 .formLogin()
-		 .loginPage("/login")
-		 .permitAll()
-		 .and()
-		 .logout()
-		 .permitAll();
+            .authorizeRequests()
+            .antMatchers("/css/**").permitAll()
+            .antMatchers("/assets/**").permitAll()
+            .antMatchers("/fonts/**").permitAll()
+            .antMatchers("/js/**").permitAll()
+            .antMatchers("/img/**").permitAll()
+            .antMatchers("/ruang/viewall").hasAnyAuthority("mahasiswa","staf")
+            .antMatchers("/ruang/view/**").hasAuthority("staf")
+            .antMatchers("/ruang/update/**").hasAuthority("staf")
+            .antMatchers("/ruang/update").hasAuthority("staf")
+            .antMatchers("/ruang/delete/**").hasAuthority("staf")
+            .antMatchers("/ruang/tambah").hasAuthority("staf")
+            .antMatchers("/peminjaman/tambah").hasAuthority("mahasiswa")
+            .antMatchers("/peminjaman/view/**").hasAnyAuthority("mahasiswa","staf")
+            .antMatchers("/peminjaman/viewall").hasAuthority("mahasiswa")
+            .antMatchers("/peminjaman/riwayat").hasAuthority("mahasiswa")
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .permitAll()
+            .and()
+            .logout()
+            .permitAll();
 	}
-	
+
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-		.passwordEncoder(NoOpPasswordEncoder.getInstance())
-		.usersByUsernameQuery("select username,password,enabled from user_account where username=?")
-		.authoritiesByUsernameQuery("select username, role from user_account where username=?");
+				.passwordEncoder(NoOpPasswordEncoder.getInstance())
+				.usersByUsernameQuery("select username,password,enabled from user_account where username=?")
+				.authoritiesByUsernameQuery("select username, role from user_account where username=?");
 	}
 }
