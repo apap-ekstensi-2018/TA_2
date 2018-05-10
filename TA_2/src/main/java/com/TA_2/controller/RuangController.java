@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.TA_2.model.PeminjamanRuangModel;
 import com.TA_2.model.RuangModel;
+import com.TA_2.service.PeminjamanRuangService;
 import com.TA_2.service.RuangService;
 
 @Controller
 public class RuangController {
 	@Autowired
     RuangService ruangDAO;
+	@Autowired
+    PeminjamanRuangService peminjamanruangDAO;
+
 	
 	@RequestMapping("/ruang/tambah")
     public String add ()
@@ -45,6 +50,7 @@ public class RuangController {
         }
 	}
 	
+
 	@RequestMapping("ruang/viewall")
 	public String view (Model model)
     {
