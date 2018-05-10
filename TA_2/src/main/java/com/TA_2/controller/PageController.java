@@ -1,6 +1,5 @@
 package com.TA_2.controller;
 
-import com.TA_2.config.Const;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
