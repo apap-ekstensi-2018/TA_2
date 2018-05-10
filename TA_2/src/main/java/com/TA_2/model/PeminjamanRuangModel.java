@@ -10,7 +10,6 @@ public class PeminjamanRuangModel {
 	private String waktuSelesai;
 	private String tanggalMulai;
 	private String tanggalSelesai;
-	private Integer kapasitas;
 	private String tujuan;
 	private String keterangan;
 	private Integer jumlahPeserta;
@@ -89,14 +88,6 @@ public class PeminjamanRuangModel {
 
 	public void setTanggalSelesai(String tanggalSelesai) {
 		this.tanggalSelesai = tanggalSelesai;
-	}
-
-	public Integer getKapasitas() {
-		return kapasitas;
-	}
-
-	public void setKapasitas(Integer kapasitas) {
-		this.kapasitas = kapasitas;
 	}
 
 	public String getTujuan() {
