@@ -21,4 +21,9 @@ public class MahasiswaServiceRest implements MahasiswaService {
     public MahasiswaModel selectMahasiswaById(int id) {
         return mahasiswaDAO.selectMahasiswaById(id);
     }
+
+    @Override
+    public MahasiswaModel getOverdueStatus(String npm) {
+        return mahasiswaDAO.getOverdueStatus(npm);
+    }
 }

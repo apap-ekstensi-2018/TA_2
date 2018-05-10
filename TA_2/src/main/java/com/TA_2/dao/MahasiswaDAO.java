@@ -5,4 +5,5 @@ import com.TA_2.model.MahasiswaModel;
 public interface MahasiswaDAO {
     MahasiswaModel selectMahasiswaById(int id);
     MahasiswaModel selectMahasiswaByNPM(String npm);
+    MahasiswaModel getOverdueStatus(String npm);
 }

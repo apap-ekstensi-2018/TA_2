@@ -15,7 +15,6 @@ public class PeminjamanRuangModel {
 	private Integer jumlahPeserta;
 	private String fasilitas;
 	private Integer isDisetujui;
-	private Integer disetujuiOleh;
 
 	public Integer getId() {
 		return id;
@@ -128,13 +127,5 @@ public class PeminjamanRuangModel {
 
 	public void setIsDisetujui(Integer isDisetujui) {
 		this.isDisetujui = isDisetujui;
-	}
-
-	public Integer getDisetujuiOleh() {
-		return disetujuiOleh;
-	}
-
-	public void setDisetujuiOleh(Integer disetujuiOleh) {
-		this.disetujuiOleh = disetujuiOleh;
 	}
 }

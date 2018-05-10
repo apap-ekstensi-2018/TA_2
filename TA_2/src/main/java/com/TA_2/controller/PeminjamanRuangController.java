@@ -1,6 +1,6 @@
 package com.TA_2.controller;
 
-import java.util.List;
+import java.util.*;
 
 import com.TA_2.dao.MahasiswaDAO;
 import com.TA_2.dao.RuangMapper;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -121,27 +120,53 @@ public class PeminjamanRuangController {
 	}
 
 	@RequestMapping("/peminjaman/tambah/submit")
-	public String addSubmit(@ModelAttribute PeminjamanRuangModel peminjaman) {
+	public String addSubmit(Model model, @ModelAttribute PeminjamanRuangModel peminjaman) {
 		List<PeminjamanRuangModel> peminjamanTerpakai = peminjamanRuanganService.selectPeminjaman(peminjaman.getTanggalMulai(), peminjaman.getTanggalSelesai(), peminjaman.getIdRuang());
 
 		if (peminjamanTerpakai.size() > 0) {
-			return "tambah-peminjaman-failed-terpakai";
+		    model.addAttribute("pesanGagal", "Gagal mengajukan peminjaman ruangan karena ruangan telah dipakai untuk jangka waktu yang anda masukkan.");
+
+			return "tambah-peminjaman-failed";
 		} else {
 			String npm = SecurityContextHolder.getContext().getAuthentication().getName();
-			MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
-			peminjaman.setIdMahasiswa(mahasiswa.getId());
+			MahasiswaModel mahasiswaOverdueStatus = mahasiswaDAO.getOverdueStatus(npm);
 
-			String[] splitTanggalMulai = peminjaman.getTanggalMulai().split(" ");
-			String[] splitTanggalSelesai = peminjaman.getTanggalSelesai().split(" ");
-			peminjaman.setTanggalMulai(splitTanggalMulai[0]);
-			peminjaman.setWaktuMulai(splitTanggalMulai[1]);
-			peminjaman.setTanggalSelesai(splitTanggalSelesai[0]);
-			peminjaman.setWaktuSelesai(splitTanggalSelesai[1]);
+			if (mahasiswaOverdueStatus.getOverdue() == true) {
+				model.addAttribute("pesanGagal", "Gagal mengajukan peminjaman ruangan karena anda masih mememiliki buku yang belum dikembalikan ke SIPERPUS.");
 
-			peminjamanRuanganService.addPeminjaman(peminjaman);
+				return "tambah-peminjaman-failed";
+			} else {
+				MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
+				peminjaman.setIdMahasiswa(mahasiswa.getId());
 
-			return "tambah-peminjaman-success";
+				String[] splitTanggalMulai = peminjaman.getTanggalMulai().split(" ");
+				String[] splitTanggalSelesai = peminjaman.getTanggalSelesai().split(" ");
+				peminjaman.setTanggalMulai(splitTanggalMulai[0]);
+				peminjaman.setWaktuMulai(splitTanggalMulai[1]);
+				peminjaman.setTanggalSelesai(splitTanggalSelesai[0]);
+				peminjaman.setWaktuSelesai(splitTanggalSelesai[1]);
+
+				peminjamanRuanganService.addPeminjaman(peminjaman);
+
+				return "tambah-peminjaman-success";
+			}
 		}
+	}
+
+	@RequestMapping("/peminjaman/tersedia")
+	public String getTersedia( Model model, @RequestParam(value = "tanggal_awal", required = false) String tanggalAwal, @RequestParam(value = "tanggal_selesai", required = false) String tanggalSelesai) {
+		List<RuangModel> ruangTersedia = new ArrayList<RuangModel>();
+
+	    if (tanggalAwal != null && tanggalSelesai != null) {
+	        model.addAttribute("tanggalAwal", tanggalAwal);
+			model.addAttribute("tanggalSelesai", tanggalSelesai);
+
+			ruangTersedia = ruangDAO.selectRuangTersedia(tanggalAwal, tanggalSelesai);
+		}
+
+		model.addAttribute("ruangTersedia", ruangTersedia);
+
+		return "view-ruang-tersedia";
 	}
 }
 

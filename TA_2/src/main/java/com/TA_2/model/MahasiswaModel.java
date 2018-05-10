@@ -4,6 +4,7 @@ public class MahasiswaModel {
     private int id;
     private String npm;
     private String nama;
+    private Boolean isOverdue;
 
     public int getId() {
         return id;
@@ -27,5 +28,13 @@ public class MahasiswaModel {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public Boolean getOverdue() {
+        return isOverdue;
+    }
+
+    public void setOverdue(Boolean overdue) {
+        isOverdue = overdue;
     }
 }

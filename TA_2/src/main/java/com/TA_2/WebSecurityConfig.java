@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/fonts/**").permitAll()
             .antMatchers("/js/**").permitAll()
             .antMatchers("/img/**").permitAll()
+            .antMatchers("/rest/**").permitAll()
             .antMatchers("/ruang/viewall").hasAnyRole("MAHASISWA","STAF")
             .antMatchers("/ruang/view/**").hasRole("STAF")
             .antMatchers("/ruang/update/**").hasRole("STAF")
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.passwordEncoder(NoOpPasswordEncoder.getInstance())
-				.usersByUsernameQuery("select username,password,enabled from user_account where username=?")
-				.authoritiesByUsernameQuery("select username, role from user_account where username=?");
+				.usersByUsernameQuery("select username,password,enabled from user_account where username = ? and enabled = 1")
+				.authoritiesByUsernameQuery("select username, role from user_account where username = ? and enabled = 1");
 	}
 }
