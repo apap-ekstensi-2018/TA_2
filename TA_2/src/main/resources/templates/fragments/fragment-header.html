@@ -10,6 +10,9 @@
 	    <link href="/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
 	    <link href="/assets/css/style.css" rel="stylesheet" />
 	    <link href="/assets/css/main-style.css" rel="stylesheet" />
+	    <link href="/css/ta.css" rel="stylesheet" />
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	    <!-- Page-Level CSS -->
 	    <link href="/assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
 	</head>
@@ -233,12 +236,12 @@
 	                    </a>
 	                    <!-- dropdown user-->
 	                    <ul class="dropdown-menu dropdown-user">
-	                        <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
-	                        </li>
-	                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-	                        </li>
-	                        <li class="divider"></li>
-	                        <li><a href="/login"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+	                        
+	                        <li>
+		                        <form style="margin-top:4.5%;margin-bottom:4.5%" th:action="@{/logout}" method="post">
+		                        <img style="width: 11px;margin-left: 24px;" src="/img/shutdown.png">
+								<input style="border:none;" type="submit" value="Sign Out"/>
+								</form>
 	                        </li>
 	                    </ul>
 	                    <!-- end dropdown-user -->

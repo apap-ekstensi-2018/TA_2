@@ -8,7 +8,10 @@
 	 	<div th:replace="fragments/fragment-header :: navigation"></div>
 
     <center><p th:text="'Status Peminjaman berhasil diubah'">Konfirmasi Persetujuan</p></center>
-    <center><p th:text="'Peminjaman di'+${peminjaman_ruangan.is_disetujui} "></p></center>
+    <center>
+		<td th:if="${peminjaman_ruangan.isDisetujui}==1">Permintaa di Setuju</td>
+		<td th:if="${peminjaman_ruangan.isDisetujui}==2">Permintaa di Tolak</td>
+    </center>
 	 <div th:replace="fragments/fragment :: footer"></div>
 </body>
 </html>
