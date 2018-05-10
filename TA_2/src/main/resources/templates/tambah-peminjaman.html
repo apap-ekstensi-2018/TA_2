@@ -1,0 +1,116 @@
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-header :: head">
+    <title>Ruang</title>
+</head>
+<body>
+<div th:replace="fragments/fragment-header :: navigation"></div>
+<main role="main" class="container">
+    <h1 class="mt-5">Ajukan Peminjaman Ruangan</h1>
+</main>
+<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment-header :: head">
+    <title>Peminjaman Ruangan</title>
+</head>
+<body>
+<!--  wrapper -->
+<div id="wrapper">
+    <div th:replace="fragments/fragment-header :: top_navigation"></div>
+    <div th:replace="fragments/fragment-header :: navigation"></div>
+    <!--  page-wrapper -->
+    <div id="page-wrapper">
+
+        <div class="row">
+            <!--  page header -->
+            <div class="col-lg-12">
+                <h1 class="page-header">Ajukan Peminjaman Ruangan</h1>
+            </div>
+            <!-- end  page header -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Form Peminjaman Ruangan
+                    </div>
+                    <div class="panel-body">
+                        <form th:action="@{/peminjaman/tambah/submit}" method="POST" th:object="${peminjamanRuangan}">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Ruangan</label>
+                                        <select name="id_ruangan" class="form-control" th:field="*{idRuang}">
+                                            <option th:each="ruang: ${semuaRuang}" th:value="${ruang.id}" th:text="${ruang.nama}">Ruang</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal Mulai</label>
+                                        <input class="form-control" type="text" name="tanggal_mulai" th:field="*{tanggalMulai}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Waktu Mulai</label>
+                                        <input class="form-control" type="text" name="waktu_mulai" th:field="*{waktuMulai}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tanggal Selesai</label>
+                                        <input class="form-control" type="text" name="tanggal_selesai" th:field="*{tanggalSelesai}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Waktu Selesai</label>
+                                        <input class="form-control" type="text" name="waktu_selesai" th:field="*{waktuSelesai}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kapasitas</label>
+                                        <input class="form-control" type="number" name="kapasitas" th:field="*{kapasitas}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tujuan</label>
+                                        <input class="form-control" type="text" name="tujuan" th:field="*{tujuan}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Keterangan</label>
+                                        <textarea class="form-control" name="keterangan" th:field="*{keterangan}"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jumlah Peserta</label>
+                                        <input class="form-control" type="number" name="jumlah_peserta" th:field="*{jumlahPeserta}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fasilitas</label>
+                                        <textarea class="form-control" name="fasilitas" th:field="*{fasilitas}"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-success" type="submit" name="action" value="save">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end page-wrapper -->
+
+</div>
+<!-- end wrapper -->
+
+<!-- Core Scripts - Include with every page -->
+<script src="/assets/plugins/jquery-1.10.2.js"></script>
+<script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/assets/plugins/pace/pace.js"></script>
+<script src="/assets/scripts/siminta.js"></script>
+<!-- Page-Level Plugin Scripts-->
+</body>
+
+</html>
+
