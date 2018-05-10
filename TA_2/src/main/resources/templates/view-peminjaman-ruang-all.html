@@ -43,7 +43,7 @@
 						        			<td th:text="${peminjaman.namaMahasiswa}"></td>
 						        			<td th:text="${peminjaman.namaRuang}"></td>
 						        			<td th:if="${peminjaman.isDisetujui eq null}">Pending</td>
-                                            <td th:if="${peminjaman.isDisetujui eq 0}">Ditolak</td>
+                                            <td th:if="${peminjaman.isDisetujui eq 2}">Ditolak</td>
                                             <td th:if="${peminjaman.isDisetujui eq 1}">Disetujui</td>
                                             <td>
 						        				<a th:href="'/peminjaman/view/'+${peminjaman.id}">Detail</a>
