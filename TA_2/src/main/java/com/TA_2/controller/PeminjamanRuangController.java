@@ -30,6 +30,9 @@ public class PeminjamanRuangController {
 	MahasiswaDAO mahasiswaDAO;
 	@Autowired
 	RuangMapper ruangDAO;
+	@Autowired
+    PeminjamanRuangService peminjamanruangDAO;
+
 
 	@RequestMapping("/peminjaman/{id}")
 	public String peminjaman( Model model, @PathVariable(value = "id") int id) {
@@ -44,13 +47,16 @@ public class PeminjamanRuangController {
 		}
 	}
 
-	@RequestMapping(value = "/peminjaman/{id}/konfirmasi/{is_disetujui}")
-	public String updateStatusPeminjaman (Model model,  @ModelAttribute PeminjamanRuangModel peminjaman)
-	{
-		peminjamanRuanganService.updatePeminjamanRuang(peminjaman);
-		model.addAttribute("title","Berhasil Ubah");
-		return "konfirmasi-success";
-	}
+	@RequestMapping(value = "/peminjaman/{id}/konfirmasi", method = RequestMethod.POST)
+    public String updateStatusPeminjaman (Model model,  @PathVariable(value = "id") Integer id, @ModelAttribute PeminjamanRuangModel peminjaman_ruangan)
+    {	
+		peminjamanruangDAO.updatePeminjamanRuang(peminjaman_ruangan);
+		 model.addAttribute("peminjaman_ruangan", peminjaman_ruangan);
+		 model.addAttribute("title","Berhasil Ubah");
+
+			return "konfirmasi-success";
+		  
+    }
 
 	@RequestMapping("/peminjaman/view/{id}")
 	public String view( Model model, @PathVariable(value = "id") int id) {

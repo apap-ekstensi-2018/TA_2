@@ -97,8 +97,8 @@
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
 						        	  <div>
-						        	   	<input type="submit" class="btn btn-success"  name="is_disetujui" th:field="*{isDisetujui}" value="Setujui"  />
-						           		<input type="submit" class="btn btn-danger"  name="is_disetujui" th:field="*{isDisetujui}" value="Tolak"  />
+						        	   	<button type="submit" class="btn btn-success"  name="isDisetujui" th:field="*{isDisetujui}" value="1" >Setujui</button>
+						           		<button type="submit" class="btn btn-danger"  name="isisetujui" th:field="*{isDisetujui}" value="2"  >Tolak</button>
 									  </div>
 								 </form>
         </div>
