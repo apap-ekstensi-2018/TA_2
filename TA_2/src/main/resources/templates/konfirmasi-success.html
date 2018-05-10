@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	 <head th:replace="fragments/fragment-header :: head">
+	 	 	<title>Notif</title>
+	 
+	 </head>
+<body>
+	 	<div th:replace="fragments/fragment-header :: navigation"></div>
+
+    <center><p th:text="'Status Peminjaman berhasil diubah'">Konfirmasi Persetujuan</p></center>
+    <center><p th:text="'Peminjaman di'+${peminjaman_ruangan.is_disetujui} "></p></center>
+	 <div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>

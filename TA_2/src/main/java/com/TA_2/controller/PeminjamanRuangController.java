@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.TA_2.model.PeminjamanRuangModel;
-import com.TA_2.model.RuangModel;
 import com.TA_2.service.PeminjamanRuangService;
 
 @Controller
@@ -35,17 +33,12 @@ public class PeminjamanRuangController {
         }
 	}
 	
-	
 	@RequestMapping(value = "/peminjaman/{id}/konfirmasi/{is_disetujui}")
     public String updateStatusPeminjaman (Model model,  @PathVariable(value = "id") Integer id, @PathVariable(value = "is_disetujui") String is_disetujui)
     {	
 		peminjamanruangDAO.updatePeminjamanRuang(is_disetujui,id);
 			model.addAttribute("title","Berhasil Ubah");
-
 			return "konfirmasi-success";
-		  
-
-	
     }
 	
 	@RequestMapping("/peminjaman/view/{id}")

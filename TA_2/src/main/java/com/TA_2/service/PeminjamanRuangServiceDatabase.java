@@ -2,6 +2,7 @@ package com.TA_2.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,26 @@ public class PeminjamanRuangServiceDatabase implements PeminjamanRuangService{
 	}
 
 
+	@Override
+	public PeminjamanRuangModel selectPeminjamanRuang2(Integer id) {
+		log.info ("select peminjaman ruang dengan id {}", id);
+        return peminjaman_ruanganMapper.selectPeminjamanRuang2(id);
+	}
+
+
+	@Override
+	public List<PeminjamanRuangModel> selectPeminjamanRuangAll() {
+		log.info ("select peminjaman ruang semua");
+        return peminjaman_ruanganMapper.selectPeminjamanRuangAll();
+	}
+
+
+	@Override
+	public List<PeminjamanRuangModel> selectPeminjamanRuangMhs(Integer id) {
+		log.info ("select peminjaman ruang dengan id mhs {}", id);
+        return peminjaman_ruanganMapper.selectPeminjamanRuangMhs(id);
+	}
+	
 	@Override
 	public PeminjamanRuangModel selectPeminjamanRuang2(Integer id) {
 		log.info ("select peminjaman ruang dengan id {}", id);

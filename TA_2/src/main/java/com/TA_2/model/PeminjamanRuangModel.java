@@ -26,5 +26,4 @@ public class PeminjamanRuangModel {
 	private String npm;
 	private String nama_mahasiswa;
 	private String nama_ruang;
-	
 }
