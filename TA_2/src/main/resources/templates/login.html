@@ -58,37 +58,27 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 	</head>
 	<body style="background-color:#fff">
 		<div class="login-page-container">
-			<!-- <div class="login-left-container">
-				<div th:if="${param.error}">Invalid username and password.</div>
-		 		<div th:if="${param.logout}">You have been logged out.</div>
-		 		<form th:action="@{/login}" method="post">
-		 			<div><label> User Name : <input type="text" name="username"/></label></div>
-		 			<div><label> Password: <input type="password" name="password"/></label></div>
-		 			<div><input type="submit" value="Sign In"/></div>
-		 		</form>
-	 		</div> -->
 	 		<div class="login-left-container">
-	 		<div class="login-form-container">
-				<div class="login-form-header-container">
-					<h1 style="font-weight:100;font-family: 'Roboto', sans-serif;">Siruang</h1>
-					<p style="color:#747474;font-weight:100;font-family: 'Roboto', sans-serif;margin:0 0 15px;">
-						Together we create access to rooms and service easier than before.
-						Wanna try the services? Please login.
-					</p>
-				</div>	 		
-	 		
-		 		<form role="form" class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="jRLgSpr5aQZn+yJg1FCFrUobf/PHbN2tXoCB7ELOxwt5Fhgs2Y8FKQMTzQvsliZgtdbGwGIimzvPpPIdoSmuzg==">
-			        <div class="form-group">
-			          <input autofocus="autofocus" class="form-control form_text" placeholder="Email" type="email" value="" name="user[email]" id="user_email">
-			        </div>
-			
-			        <div class="form-group">
-			          <input class="form-control form_text" placeholder="Password" type="password" name="user[password]" id="user_password">
-			        </div>
-			
-			        <input class="button-comment" type="submit" value="Comment"/>
-				</form>
-			</div>
+		 		<div class="login-form-container">
+					<div class="login-form-header-container">
+						<h1 style="font-weight:100;font-family: 'Roboto', sans-serif;">Siruang</h1>
+						<p style="color:#747474;font-weight:100;font-family: 'Roboto', sans-serif;margin:0 0 15px;">
+							Together we create access to rooms and buldings easier than before.
+							Wanna try the services? Please login.
+						</p>
+					</div>	 		
+					<div th:if="${param.error}" style="margin-bottom: 5px;color: #a94442;">Invalid username and password.</div>
+			 		<div th:if="${param.logout}" style="margin-bottom: 5px;color: #a94442;">You have been logged out.</div>	 		
+			 		<form th:action="@{/login}" method="post">
+				        <div class="form-group">
+				          <input autofocus="autofocus" class="form-control form_text" placeholder="Username" type="text" name="username"/>
+				        </div>
+				        <div class="form-group">
+				          <input class="form-control form_text" placeholder="Password" type="password" name="password"/>
+				        </div>
+						<input class="button-comment" type="submit" value="Sign In"/>
+					</form>
+				</div>
 			</div>
  		<div class="login-right-container"></div>
 		</div>
