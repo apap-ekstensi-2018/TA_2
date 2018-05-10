@@ -13,64 +13,47 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class PeminjamanRuangServiceDatabase implements PeminjamanRuangService{
+public class PeminjamanRuangServiceDatabase implements PeminjamanRuangService {
 	@Autowired
-    private PeminjamanRuangMapper peminjaman_ruanganMapper;
-	
-	
-	@Override
-	public PeminjamanRuangModel selectPeminjamanRuang(Integer id) {
-		log.info ("select ruang dengan id {}", id);
-        return peminjaman_ruanganMapper.selectPeminjamanRuang(id);
-	}
-
-		
-	@Override
-	public void updatePeminjamanRuang(String is_disetujui, int id) {
-		log.info ("update peminjamanruangan");
-		peminjaman_ruanganMapper.updatePeminjamanRuang(is_disetujui,id);
-	}
-
+    private PeminjamanRuangMapper peminjamanRuangMapper;
 
 	@Override
-	public PeminjamanRuangModel selectPeminjamanRuang2(Integer id) {
-		log.info ("select peminjaman ruang dengan id {}", id);
-        return peminjaman_ruanganMapper.selectPeminjamanRuang2(id);
+	public PeminjamanRuangModel selectPeminjamanRuang(int id) {
+		//log.info ("select ruang dengan id {}", id);
+        return peminjamanRuangMapper.selectPeminjamanRuang(id);
 	}
 
+	@Override
+	public PeminjamanRuangModel selectPeminjamanRuang2(int id) {
+		//log.info ("select peminjaman ruang dengan id {}", id);
+		return peminjamanRuangMapper.selectPeminjamanRuang2(id);
+	}
 
 	@Override
 	public List<PeminjamanRuangModel> selectPeminjamanRuangAll() {
-		log.info ("select peminjaman ruang semua");
-        return peminjaman_ruanganMapper.selectPeminjamanRuangAll();
+		//log.info ("select peminjaman ruang semua");
+		return peminjamanRuangMapper.selectPeminjamanRuangAll();
 	}
-
 
 	@Override
-	public List<PeminjamanRuangModel> selectPeminjamanRuangMhs(Integer id) {
-		log.info ("select peminjaman ruang dengan id mhs {}", id);
-        return peminjaman_ruanganMapper.selectPeminjamanRuangMhs(id);
+	public List<PeminjamanRuangModel> selectPeminjamanRuangMhs(int id) {
+		//log.info ("select peminjaman ruang dengan id mhs {}", id);
+		return peminjamanRuangMapper.selectPeminjamanRuangMhs(id);
 	}
-	
-	@Override
-	public PeminjamanRuangModel selectPeminjamanRuang2(Integer id) {
-		log.info ("select peminjaman ruang dengan id {}", id);
-        return peminjaman_ruanganMapper.selectPeminjamanRuang2(id);
-	}
-
 
 	@Override
-	public List<PeminjamanRuangModel> selectPeminjamanRuangAll() {
-		log.info ("select peminjaman ruang semua");
-        return peminjaman_ruanganMapper.selectPeminjamanRuangAll();
+	public void updatePeminjamanRuang(PeminjamanRuangModel peminjaman) {
+		//log.info ("update peminjamanruangan");
+		peminjamanRuangMapper.updatePeminjamanRuang(peminjaman);
 	}
-
 
 	@Override
-	public List<PeminjamanRuangModel> selectPeminjamanRuangMhs(Integer id) {
-		log.info ("select peminjaman ruang dengan id mhs {}", id);
-        return peminjaman_ruanganMapper.selectPeminjamanRuangMhs(id);
+	public void addPeminjaman(PeminjamanRuangModel peminjaman) {
+		peminjamanRuangMapper.addPeminjaman(peminjaman);
 	}
 
-
+	@Override
+	public List<PeminjamanRuangModel> selectPeminjaman(String tanggalDanWaktuMulai, String tanggalDanWaktuSelesai, int idRuang) {
+		return peminjamanRuangMapper.selectPeminjaman(tanggalDanWaktuMulai, tanggalDanWaktuSelesai, idRuang);
+	}
 }

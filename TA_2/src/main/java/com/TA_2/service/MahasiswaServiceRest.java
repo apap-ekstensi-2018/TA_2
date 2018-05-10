@@ -13,7 +13,12 @@ public class MahasiswaServiceRest implements MahasiswaService {
     private MahasiswaDAO mahasiswaDAO;
 
     @Override
-    public MahasiswaModel selectMahasiswa(String npm) {
-        return mahasiswaDAO.selectMahasiswa(npm);
+    public MahasiswaModel selectMahasiswaByNPM(String npm) {
+        return mahasiswaDAO.selectMahasiswaByNPM(npm);
+    }
+
+    @Override
+    public MahasiswaModel selectMahasiswaById(int id) {
+        return mahasiswaDAO.selectMahasiswaById(id);
     }
 }
