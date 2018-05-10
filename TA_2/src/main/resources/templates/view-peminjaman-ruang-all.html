@@ -34,6 +34,7 @@
 						        			<td>Nama Peminjam</td>
 						        			<td>Nama Ruangan</td>
 						        			<td>Status</td>
+						        			<td>Aksi</td>
 						        		</tr>
 						        	</thead>
 						        	<tbody>
@@ -44,6 +45,9 @@
 						        			<td th:if="${peminjaman.isDisetujui eq null}">Pending</td>
                                             <td th:if="${peminjaman.isDisetujui eq 0}">Ditolak</td>
                                             <td th:if="${peminjaman.isDisetujui eq 1}">Disetujui</td>
+                                            <td>
+						        				<a th:href="'/peminjaman/view/'+${peminjaman.id}">Detail</a>
+						        			</td>
 						        		</tr>
 						        	</tbody>
 						        </table>

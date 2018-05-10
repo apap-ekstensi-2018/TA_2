@@ -68,9 +68,9 @@ public class PeminjamanRuangController {
 			peminjaman_ruangan.setNamaMahasiswa(mahasiswa.getNama());
 			
 			RuangModel ruang = ruangDAO.selectRuang(peminjaman_ruangan.getIdRuang());
+			peminjaman_ruangan.setNamaRuang(ruang.getNama());
 					
 			model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
-			model.addAttribute ("ruang", ruang);
 			return "view-peminjaman-ruang";
 		} else {
 			model.addAttribute ("id", id); return "not-found";
@@ -83,6 +83,9 @@ public class PeminjamanRuangController {
 		for (PeminjamanRuangModel peminjaman: peminjamanRuang) {
 			MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaById(peminjaman.getIdMahasiswa());
 			peminjaman.setNamaMahasiswa(mahasiswa.getNama());
+			
+			RuangModel ruang = ruangDAO.selectRuang(peminjaman.getIdRuang());
+			peminjaman.setNamaRuang(ruang.getNama());
 		}
 		model.addAttribute("peminjamanRuang", peminjamanRuang);
 
@@ -90,13 +93,21 @@ public class PeminjamanRuangController {
 	}
 
 	@RequestMapping("/peminjaman/riwayat")
-	public String viewmhs( Model model, @PathVariable(value = "id") int id) {
-		List<PeminjamanRuangModel> peminjaman_ruangan = peminjamanRuanganService.selectPeminjamanRuangMhs(id);
-		model.addAttribute("peminjaman_ruangan",peminjaman_ruangan);
-
-		model.addAttribute ("peminjaman_ruangan", peminjaman_ruangan);
+	public String viewmhs( Model model) {
+		String npm = SecurityContextHolder.getContext().getAuthentication().getName();
+		MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
+		
+		List<PeminjamanRuangModel> peminjamanRuangan = peminjamanRuanganService.selectPeminjamanRuangMhs(mahasiswa.getId());
+		for (PeminjamanRuangModel peminjaman: peminjamanRuangan) {
+			mahasiswa = mahasiswaDAO.selectMahasiswaById(peminjaman.getIdMahasiswa());
+			peminjaman.setNamaMahasiswa(mahasiswa.getNama());
+			
+			RuangModel ruang = ruangDAO.selectRuang(peminjaman.getIdRuang());
+			peminjaman.setNamaRuang(ruang.getNama());
+		}
+		
+		model.addAttribute("peminjamanRuang",peminjamanRuangan);
 		return "view-peminjaman-ruang-mhs";
-
 	}
 
 	@RequestMapping("/peminjaman/tambah")

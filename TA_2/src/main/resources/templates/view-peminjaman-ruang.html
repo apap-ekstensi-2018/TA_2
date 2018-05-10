@@ -52,7 +52,7 @@
 					                <tr>
 					                    <th>Ruangan</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${ruang.nama}"></td>
+					                    <td th:text="${peminjaman_ruangan.namaRuang}"></td>
 					                </tr>
 					                <tr>
 					                    <th>Tanggal Mulai Penggunaan</th>
@@ -92,7 +92,9 @@
 					                <tr>
 					                    <th>Status Peminjaman</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:text="${peminjaman_ruangan.isDisetujui}"></td>
+					                    <td th:if="${peminjaman_ruangan.isDisetujui}==0">Pending</td>
+					                    <td th:if="${peminjaman_ruangan.isDisetujui}==1">Setuju</td>
+					                    <td th:if="${peminjaman_ruangan.isDisetujui}==2">Tolak</td>
 					                </tr>
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
