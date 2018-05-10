@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/ruang/update").hasRole("STAF")
             .antMatchers("/ruang/delete/**").hasRole("STAF")
             .antMatchers("/ruang/tambah").hasRole("STAF")
-            .antMatchers("/peminjaman/tambah").hasRole("mahasiswa")
+            .antMatchers("/peminjaman/tambah").hasRole("MAHASISWA")
             .antMatchers("/peminjaman/view/**").hasAnyRole("MAHASISWA","STAF")
             .antMatchers("/peminjaman/viewall").hasRole("STAF")
             .antMatchers("/peminjaman/riwayat").hasRole("MAHASISWA")
