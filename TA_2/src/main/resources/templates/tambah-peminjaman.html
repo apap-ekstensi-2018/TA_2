@@ -47,44 +47,44 @@
                                     <div class="form-group">
                                         <label>Ruangan</label>
                                         <select name="id_ruangan" class="form-control" th:field="*{idRuang}">
-                                            <option th:each="ruang: ${semuaRuang}" th:value="${ruang.id}" th:text="${ruang.nama}">Ruang</option>
+                                            <option th:each="ruang: ${semuaRuang}" th:value="${ruang.id}" required="true" th:text="${ruang.nama}">Ruang</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Mulai</label>
-                                        <input class="form-control" type="text" name="tanggal_mulai" th:field="*{tanggalMulai}" />
+                                        <input class="form-control" type="text" name="tanggal_mulai" required="true" th:field="*{tanggalMulai}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Waktu Mulai</label>
-                                        <input class="form-control" type="text" name="waktu_mulai" th:field="*{waktuMulai}" />
+                                        <input class="form-control" type="text" name="waktu_mulai" required="true" th:field="*{waktuMulai}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Selesai</label>
-                                        <input class="form-control" type="text" name="tanggal_selesai" th:field="*{tanggalSelesai}" />
+                                        <input class="form-control" type="text" name="tanggal_selesai" required="true" th:field="*{tanggalSelesai}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Waktu Selesai</label>
-                                        <input class="form-control" type="text" name="waktu_selesai" th:field="*{waktuSelesai}" />
+                                        <input class="form-control" type="text" name="waktu_selesai" required="true" th:field="*{waktuSelesai}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Kapasitas</label>
-                                        <input class="form-control" type="number" name="kapasitas" th:field="*{kapasitas}" />
+                                        <input class="form-control" type="number" name="kapasitas" required="true" th:field="*{kapasitas}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Tujuan</label>
-                                        <input class="form-control" type="text" name="tujuan" th:field="*{tujuan}" />
+                                        <input class="form-control" type="text" name="tujuan" required="true" th:field="*{tujuan}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Keterangan</label>
-                                        <textarea class="form-control" name="keterangan" th:field="*{keterangan}"></textarea>
+                                        <textarea class="form-control" name="keterangan" required="true" th:field="*{keterangan}"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Jumlah Peserta</label>
-                                        <input class="form-control" type="number" name="jumlah_peserta" th:field="*{jumlahPeserta}" />
+                                        <input class="form-control" type="number" name="jumlah_peserta" required="true" th:field="*{jumlahPeserta}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Fasilitas</label>
-                                        <textarea class="form-control" name="fasilitas" th:field="*{fasilitas}"></textarea>
+                                        <textarea class="form-control" name="fasilitas" required="true" th:field="*{fasilitas}"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-success" type="submit" name="action" value="save">Save</button>
