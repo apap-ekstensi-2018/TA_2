@@ -92,14 +92,17 @@
 					                <tr>
 					                    <th>Status Peminjaman</th>
 					                    <td style="width: 7%;"></td>
-					                    <td th:if="${peminjaman_ruangan.isDisetujui}==0">Pending</td>
+					                    <td th:if="${peminjaman_ruangan.isDisetujui} eq null">Pending</td>
 					                    <td th:if="${peminjaman_ruangan.isDisetujui}==1">Setuju</td>
 					                    <td th:if="${peminjaman_ruangan.isDisetujui}==2">Tolak</td>
 					                </tr>
 					             </table>
 						         <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
-						        	  <div>
+						        	  <div th:if="${peminjaman_ruangan.isDisetujui} eq null">
 						        	   	<button type="submit" class="btn btn-success"  name="isDisetujui" th:field="*{isDisetujui}" value="1" >Setujui</button>
+						           		<button type="submit" class="btn btn-danger"  name="isDisetujui" th:field="*{isDisetujui}" value="2"  >Tolak</button>
+									  </div>
+									  <div th:if="${peminjaman_ruangan.isDisetujui} eq 1">
 						           		<button type="submit" class="btn btn-danger"  name="isDisetujui" th:field="*{isDisetujui}" value="2"  >Tolak</button>
 									  </div>
 								 </form>
