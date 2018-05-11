@@ -25,4 +25,11 @@ public class MahasiswaDAOImpl implements MahasiswaDAO {
 
         return mahasiswaModel;
     }
+
+    @Override
+    public MahasiswaModel getOverdueStatus(String npm) {
+        MahasiswaModel mahasiswaModel = restTemplate.getForObject(ApiCall.SIPERPUS_API_BASE_URL + "/siperpus/api/json/isOverdue/" + npm, MahasiswaModel.class);
+
+        return mahasiswaModel;
+    }
 }
