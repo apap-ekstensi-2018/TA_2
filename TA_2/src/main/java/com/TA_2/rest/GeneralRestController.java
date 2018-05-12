@@ -11,7 +11,7 @@ import com.TA_2.service.RuangService;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/api")
 public class GeneralRestController {
 	@Autowired
 	RuangService ruangService;
