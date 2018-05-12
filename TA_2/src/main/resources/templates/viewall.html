@@ -42,7 +42,7 @@
 								        			<td th:text="${ruang.kapasitas}"></td>
 								        			<td th:if="${#httpServletRequest.isUserInRole('STAF')}">
 								        				<a th:href="'/ruang/view/'+${ruang.id}">Detail</a> &nbsp &nbsp
-									        			<a th:href="'/ruang/update/'+${ruang.id}">Ubah</a> &nbsp &nbsp
+									        			<a th:href="'/ruang/ubah/'+${ruang.id}">Ubah</a> &nbsp &nbsp
 									        			<a th:href="'/ruang/delete/'+${ruang.id}">Hapus</a>
 								        			</td>
 								        		</tr>

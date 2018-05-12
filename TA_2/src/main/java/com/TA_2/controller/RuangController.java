@@ -59,7 +59,7 @@ public class RuangController {
         return "viewall";
     }
 	
-	@RequestMapping("/ruang/update/{id_ruangan}")
+	@RequestMapping("/ruang/ubah/{id_ruangan}")
     public String update (Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan)
     {	
 		RuangModel ruang = ruangDAO.selectRuang(id_ruangan);
@@ -73,11 +73,10 @@ public class RuangController {
         }
     }
 	
-	@RequestMapping(value = "/ruang/update/submit")
+	@RequestMapping(value = "/ruang/ubah/submit")
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
     {
 		ruangDAO.updateRuang(ruang);
-		//model.addAttribute ("ruang", ruang);
         return "update-success";
     }
 	
