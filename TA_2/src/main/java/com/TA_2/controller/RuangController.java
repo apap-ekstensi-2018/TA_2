@@ -32,8 +32,13 @@ public class RuangController {
 	@RequestMapping("/ruang/tambah/submit")
     public String addSubmit (@ModelAttribute RuangModel ruang)
     {
-		ruangDAO.addRuang (ruang);
-        return "tambah-success";
+		RuangModel ruangExist = ruangDAO.selectRuangByName(ruang.getNama());
+		if (ruangExist == null) {
+			ruangDAO.addRuang (ruang);
+	        return "tambah-success";
+		} else {
+			return "notif-alreadyExist";
+		}
     }
 
 	
