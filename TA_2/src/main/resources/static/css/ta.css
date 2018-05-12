@@ -27,7 +27,7 @@
 .button-comment {
 	margin-top: 5px;
 	border:none;
-	background-color:#33b5e5!important;
+	background-color:#0fb9b1!important;
 	color: #fff!important;
 	padding: .84rem 2.14rem;
 	font-size: 1.5rem;
@@ -50,6 +50,11 @@
     font-weight: 100;
     color: #8a9199;
     font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.form_text:focus {
+	outline: none !important;
+    box-shadow: 0 0 7px #0fb9b1ba;
 }
 
 login-form-header-container {
