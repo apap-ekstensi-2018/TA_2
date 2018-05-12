@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/fonts/**").permitAll()
             .antMatchers("/js/**").permitAll()
             .antMatchers("/img/**").permitAll()
-            .antMatchers("/rest/**").permitAll()
+            .antMatchers("/api/**").permitAll()
             .antMatchers("/ruang/viewall").hasAnyRole("MAHASISWA","STAF")
             .antMatchers("/ruang/view/**").hasRole("STAF")
             .antMatchers("/ruang/update/**").hasRole("STAF")
