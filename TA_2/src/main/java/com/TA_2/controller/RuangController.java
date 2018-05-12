@@ -82,12 +82,9 @@ public class RuangController {
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
     {
 		RuangModel ruangExist = ruangDAO.selectRuangByName(ruang.getNama());
-		if (ruangExist == null) {
 			ruangDAO.updateRuang(ruang);
 	        return "update-success";
-		} else {
-			return "notif-alreadyExist";
-		}
+		
     }
 	
 	@RequestMapping("/ruang/delete/{id_ruangan}")

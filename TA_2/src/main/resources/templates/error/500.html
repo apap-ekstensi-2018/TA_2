@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/fragment-header :: head">
+	 </head>
+<body>
+    <!--  wrapper -->
+    <div id="wrapper">
+       <div th:replace="fragments/fragment-header :: top_navigation"></div>
+        <div th:replace="fragments/fragment-header :: navigation"></div>
+        <!--  page-wrapper -->
+      <div id="page-wrapper">
+            <div class="row">
+                <!--  page header -->
+                <div class="col-lg-12">
+                    <h1 class="page-header">Pemberitahuan</h1>
+                </div>
+                 <!--end  page header -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                     <!--  Alert Styles -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="alert alert-danger">
+                                Permintaan Tidak Berhasil
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Alert Styles -->
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- end page-wrapper -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/assets/plugins/pace/pace.js"></script>
+    <script src="/assets/scripts/siminta.js"></script>
+   
+   
+</body>
+
+</html>
+
