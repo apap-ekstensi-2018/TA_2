@@ -83,7 +83,8 @@
                                     </tbody>
                                 </table>
                                 <div th:if="${#httpServletRequest.isUserInRole('STAF')}">
-                                	<form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
+                                <form action="#" th:action="'/peminjaman/' + ${peminjaman_ruangan.id}+'/konfirmasi/'" method="post" th:object="${peminjaman_ruangan}">
+						        	  <input type="hidden" name="diSetujuiOleh" th:filed="*{diSetujuiOleh}" th:value="${#httpServletRequest.remoteUser}"/>    
 						        	  <div th:if="${peminjaman_ruangan.isDisetujui} eq null">
 						        	   	<button type="submit" class="btn btn-success"  name="isDisetujui" th:field="*{isDisetujui}" value="1" >Setujui</button>
 						           	<button type="submit" class="btn btn-danger"  name="isDisetujui" th:field="*{isDisetujui}" value="2"  >Tolak</button>
