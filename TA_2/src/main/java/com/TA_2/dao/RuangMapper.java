@@ -33,4 +33,7 @@ public interface RuangMapper {
 	List<RuangModel> selectAllRuangTersedia(String idRuangTerpakai);
 	@Select("SELECT * FROM ruang WHERE id NOT IN(SELECT id_ruang FROM peminjaman_ruangan WHERE ((timestamp(tanggal_mulai, waktu_mulai) between #{tanggalDanWaktuMulai} and #{tanggalDanWaktuSelesai}) OR (timestamp(tanggal_selesai, waktu_selesai) between #{tanggalDanWaktuMulai} and #{tanggalDanWaktuSelesai})) AND is_disetujui = 1 GROUP BY id_ruang)")
 	List<RuangModel> selectRuangTersedia(@Param("tanggalDanWaktuMulai") String tanggalDanWaktuMulai, @Param("tanggalDanWaktuSelesai") String tanggalDanWaktuSelesai);
+
+	@Select("select id, nama, kapasitas from ruang where nama = #{nama}")
+    RuangModel selectRuangByName(@Param("nama") String nama);
 }

@@ -15,4 +15,6 @@ public interface RuangService {
 	
 	void deleteRuang (Integer id_ruang);
 	
+	RuangModel selectRuangByName (String nama);
+	
 }

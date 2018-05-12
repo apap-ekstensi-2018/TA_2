@@ -46,4 +46,10 @@ public class RuangServiceDatabase implements RuangService{
 //    	log.info("ruang " + id_ruang + " deleted");
     	ruangMapper.deleteRuang(id_ruang);
     }
+	
+	@Override
+	public RuangModel selectRuangByName(String nama) {
+//		log.info ("select ruang dengan nama {}", nama);
+        return ruangMapper.selectRuangByName(nama);
+	}
 }

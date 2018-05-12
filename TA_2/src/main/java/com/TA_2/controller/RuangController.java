@@ -32,8 +32,13 @@ public class RuangController {
 	@RequestMapping("/ruang/tambah/submit")
     public String addSubmit (@ModelAttribute RuangModel ruang)
     {
-		ruangDAO.addRuang (ruang);
-        return "tambah-success";
+		RuangModel ruangExist = ruangDAO.selectRuangByName(ruang.getNama());
+		if (ruangExist == null) {
+			ruangDAO.addRuang (ruang);
+	        return "tambah-success";
+		} else {
+			return "notif-alreadyExist";
+		}
     }
 
 	
@@ -59,7 +64,7 @@ public class RuangController {
         return "viewall";
     }
 	
-	@RequestMapping("/ruang/update/{id_ruangan}")
+	@RequestMapping("/ruang/ubah/{id_ruangan}")
     public String update (Model model, @PathVariable(value = "id_ruangan") Integer id_ruangan)
     {	
 		RuangModel ruang = ruangDAO.selectRuang(id_ruangan);
@@ -73,12 +78,16 @@ public class RuangController {
         }
     }
 	
-	@RequestMapping(value = "/ruang/update/submit")
+	@RequestMapping(value = "/ruang/ubah/submit")
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
     {
-		ruangDAO.updateRuang(ruang);
-		//model.addAttribute ("ruang", ruang);
-        return "update-success";
+		RuangModel ruangExist = ruangDAO.selectRuangByName(ruang.getNama());
+		if (ruangExist == null) {
+			ruangDAO.updateRuang(ruang);
+	        return "update-success";
+		} else {
+			return "notif-alreadyExist";
+		}
     }
 	
 	@RequestMapping("/ruang/delete/{id_ruangan}")
