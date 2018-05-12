@@ -52,4 +52,10 @@ public class RuangServiceDatabase implements RuangService{
 //		log.info ("select ruang dengan nama {}", nama);
         return ruangMapper.selectRuangByName(nama);
 	}
+	
+	@Override
+	public RuangModel selectRuangByNameForUpdate  (String nama, Integer id) {
+//		log.info ("select ruang dengan nama {}", nama);
+        return ruangMapper.selectRuangByNameForUpdate(nama, id);
+	}
 }

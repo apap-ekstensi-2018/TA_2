@@ -36,4 +36,7 @@ public interface RuangMapper {
 
 	@Select("select id, nama, kapasitas from ruang where nama = #{nama}")
     RuangModel selectRuangByName(@Param("nama") String nama);
+	
+	@Select("select id, nama, kapasitas from ruang where nama = #{nama} and id <> #{id}")
+	RuangModel selectRuangByNameForUpdate(@Param("nama") String nama, @Param("id") Integer id);
 }
