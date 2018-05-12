@@ -81,7 +81,6 @@ public class RuangController {
 	@RequestMapping(value = "/ruang/ubah/submit")
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
     {
-		RuangModel ruangExist = ruangDAO.selectRuangByName(ruang.getNama());
 			ruangDAO.updateRuang(ruang);
 	        return "update-success";
 		
