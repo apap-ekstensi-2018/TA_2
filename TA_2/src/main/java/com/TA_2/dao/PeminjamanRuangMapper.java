@@ -26,7 +26,7 @@ public interface PeminjamanRuangMapper {
 	@Select("select * from peminjaman_ruangan where id_mahasiswa = #{id}")
     List<PeminjamanRuangModel> selectPeminjamanRuangMhs(@Param("id") int id);
 
-	@Update("UPDATE peminjaman_ruangan SET is_disetujui = #{isDisetujui} WHERE id = #{id}")
+	@Update("UPDATE peminjaman_ruangan SET is_disetujui = #{isDisetujui}, disetujui_oleh = #{diSetujuiOleh} WHERE id = #{id}")
     void updatePeminjamanRuang(PeminjamanRuangModel peminjaman);
 
     @Insert("INSERT INTO peminjaman_ruangan(id_ruang, id_mahasiswa, waktu_mulai, waktu_selesai, tanggal_mulai, tanggal_selesai, tujuan, keterangan, jumlah_peserta, fasilitas, is_disetujui, disetujui_oleh) VALUES (#{idRuang}, #{idMahasiswa}, #{waktuMulai}, #{waktuSelesai}, #{tanggalMulai}, #{tanggalSelesai}, #{tujuan}, #{keterangan}, #{jumlahPeserta}, #{fasilitas}, null, null)")
