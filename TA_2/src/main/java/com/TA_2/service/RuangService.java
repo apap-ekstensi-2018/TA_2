@@ -17,4 +17,6 @@ public interface RuangService {
 	
 	RuangModel selectRuangByName (String nama);
 	
+	RuangModel selectRuangByNameForUpdate  (String nama, Integer id);
+	
 }

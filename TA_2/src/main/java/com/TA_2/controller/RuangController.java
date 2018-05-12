@@ -80,10 +80,14 @@ public class RuangController {
 	
 	@RequestMapping(value = "/ruang/ubah/submit")
     public String updateSubmit (@ModelAttribute RuangModel ruang, Model model)
-    {
-			ruangDAO.updateRuang(ruang);
-	        return "update-success";
-		
+    {     
+	        RuangModel ruangExist = ruangDAO.selectRuangByNameForUpdate(ruang.getNama(), ruang.getId());
+			if (ruangExist == null) {
+				ruangDAO.updateRuang(ruang);
+		        return "update-success";
+			} else {
+				return "notif-alreadyExist";
+			}
     }
 	
 	@RequestMapping("/ruang/delete/{id_ruangan}")
