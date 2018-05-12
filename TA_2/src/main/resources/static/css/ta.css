@@ -35,6 +35,14 @@
 	border-radius: 3px;
 }
 
+.button-logout, .button-logout:focus, .button-logout:active, .button-logout:focus:active {
+	border:none;
+	background-image: none;
+	  outline: none;
+	  -webkit-box-shadow: none;
+	  box-shadow: none;
+}
+
 .form_text {
     padding: 0 15px;
     height: 55px;
