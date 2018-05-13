@@ -131,24 +131,30 @@ public class PeminjamanRuangController {
 			String npm = SecurityContextHolder.getContext().getAuthentication().getName();
 			MahasiswaModel mahasiswaOverdueStatus = mahasiswaDAO.getOverdueStatus(npm);
 
-			if (mahasiswaOverdueStatus.getOverdue() == true) {
-				model.addAttribute("pesanGagal", "Gagal mengajukan peminjaman ruangan karena anda masih mememiliki buku yang belum dikembalikan ke SIPERPUS.");
+			if (mahasiswaOverdueStatus == null) {
+				model.addAttribute("pesanGagal", "Gagal mengajukan peminjaman ruangan karena data mahasiwa tidak ditemukan di SIPERPUS.");
 
 				return "tambah-peminjaman-failed";
 			} else {
-				MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
-				peminjaman.setIdMahasiswa(mahasiswa.getId());
+				if (mahasiswaOverdueStatus.getOverdue() == true) {
+					model.addAttribute("pesanGagal", "Gagal mengajukan peminjaman ruangan karena anda masih mememiliki buku yang belum dikembalikan ke SIPERPUS.");
 
-				String[] splitTanggalMulai = peminjaman.getTanggalMulai().split(" ");
-				String[] splitTanggalSelesai = peminjaman.getTanggalSelesai().split(" ");
-				peminjaman.setTanggalMulai(splitTanggalMulai[0]);
-				peminjaman.setWaktuMulai(splitTanggalMulai[1]);
-				peminjaman.setTanggalSelesai(splitTanggalSelesai[0]);
-				peminjaman.setWaktuSelesai(splitTanggalSelesai[1]);
+					return "tambah-peminjaman-failed";
+				} else {
+					MahasiswaModel mahasiswa = mahasiswaDAO.selectMahasiswaByNPM(npm);
+					peminjaman.setIdMahasiswa(mahasiswa.getId());
 
-				peminjamanRuanganService.addPeminjaman(peminjaman);
+					String[] splitTanggalMulai = peminjaman.getTanggalMulai().split(" ");
+					String[] splitTanggalSelesai = peminjaman.getTanggalSelesai().split(" ");
+					peminjaman.setTanggalMulai(splitTanggalMulai[0]);
+					peminjaman.setWaktuMulai(splitTanggalMulai[1]);
+					peminjaman.setTanggalSelesai(splitTanggalSelesai[0]);
+					peminjaman.setWaktuSelesai(splitTanggalSelesai[1]);
 
-				return "tambah-peminjaman-success";
+					peminjamanRuanganService.addPeminjaman(peminjaman);
+
+					return "tambah-peminjaman-success";
+				}
 			}
 		}
 	}
